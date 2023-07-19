@@ -1,2 +1,2 @@
-# teams-app
-A microsoft teams clone
+# discord-clone-app
+A discord clone
