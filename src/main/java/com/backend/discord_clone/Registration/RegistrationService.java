@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class RegistrationService {
 
     public String register(RegistrationRequest request) {
-        return "works";
+        return "POST request successful";
     }
 
 }

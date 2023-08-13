@@ -31,14 +31,14 @@ public class WebSecurityConfig{
         //Protects endpoints at /api/<type>/register
         http.authorizeHttpRequests(Configurer ->
                     Configurer
-                    .requestMatchers("/api/v*/register/**").permitAll());
+                    .requestMatchers("/api/v*/register/**").hasAnyRole("User", "Admin")
+                    .requestMatchers("/index/**").permitAll());
         http.formLogin(formLogin -> formLogin
-        .loginPage("/login")
-        .permitAll());
-                    
+        .disable());
     return http.build();
     }
     
+
     @Autowired
    public void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.authenticationProvider(daoAuthenticationProvider());

@@ -1,5 +1,6 @@
 package com.backend.discord_clone.Registration;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ private static RegistrationService registrationService;
 /** 
  * Register handles the Registration request.
 */
+@PostMapping()
     public String register(@RequestBody RegistrationRequest request){
         return registrationService.register(request);
     }
