@@ -12,16 +12,15 @@ import lombok.AllArgsConstructor;
  * RegistrationController handles user registration.
  */
 @RestController
-@RequestMapping(path = "api/v1/registration")
+@RequestMapping(value = "/api/v1/registration")
 @AllArgsConstructor
 public class RegistrationController {
-    
+
 private static RegistrationService registrationService;
 
 /** 
  * Register handles the Registration request.
 */
-@PostMapping()
     public String register(@RequestBody RegistrationRequest request){
         return registrationService.register(request);
     }
