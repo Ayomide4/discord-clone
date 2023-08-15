@@ -1,0 +1,6 @@
+{
+    "java.compile.nullAnalysis.mode": "disabled",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.project.outputPath": "Backend\\target",
+    "java.project.sourcePaths": []
+}
