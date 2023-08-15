@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.backend</groupId>
-	<artifactId>discord_clone</artifactId>
+	<artifactId>server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discord_clone</name>
+	<name>server</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>20</java.version>
@@ -72,6 +72,13 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<sourceDirectory>src\main</sourceDirectory>
+		<outputDirectory>target\classes</outputDirectory>
+		<resources>
+			<resource>
+				<directory>src\main\resources</directory>
+			</resource>
+		</resources>
 	</build>
 
 
