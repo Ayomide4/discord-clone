@@ -18,6 +18,11 @@ public class RegistrationController {
 
     private final RegistrationService registrationService;
 
+    /**
+     * Register is the register Request for a new User. 
+     * @param request The request body Information. 
+     * @return return Post Request confirmation.
+     */
     @PostMapping
     public String register(@RequestBody RegistrationRequest request) {
         return registrationService.register(request);

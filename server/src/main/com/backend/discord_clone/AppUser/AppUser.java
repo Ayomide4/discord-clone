@@ -28,7 +28,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-class AppUser implements UserDetails{
+public class AppUser implements UserDetails{
 
     //Defining allocation in database
     @SequenceGenerator(
@@ -45,7 +45,8 @@ class AppUser implements UserDetails{
         generator = "id_sequence"
     )
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String userName;
     private String email;
     private String password;
@@ -58,23 +59,21 @@ class AppUser implements UserDetails{
 
     /**
      * AppUser main Constructor.
-     * @param name Name of User.
+     * @param firstName First Name of User.
+     * @param lastName Last Name of User.
      * @param userName UserName of user.
      * @param email Email of user.
      * @param password  Password of User. 
      * @param appUserRole General role of User. 
-     * @param locked Lock type of User. 
-     * @param enabled Is active of User.
      */
-    public AppUser(String name, String userName, String email, String password, AppUserRole appUserRole, Boolean locked,
-            Boolean enabled) {
-        this.name = name;
+    public AppUser(String firstName, String lastName, String userName, String email, String password, AppUserRole appUserRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
-        this.locked = locked;
-        this.enabled = enabled;
+ 
     }
 
     /**
@@ -106,6 +105,18 @@ class AppUser implements UserDetails{
     @Override
     public String getUsername() {
         return userName;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+    
+
+    public String getEmail() {
+        return email;
     }
 
     /**
