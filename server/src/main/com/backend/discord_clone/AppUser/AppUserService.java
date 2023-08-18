@@ -68,7 +68,7 @@ public class AppUserService implements UserDetailsService{
             //TODO:Send conformation Token
 
 
-            return "";
+            return "Registration Post Recieved";
     }
     
 }

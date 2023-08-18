@@ -35,9 +35,7 @@ public class WebSecurityConfig{
                     .requestMatchers("/api/v1/registration").permitAll()
                     .requestMatchers("/index/**").permitAll()
                     .anyRequest().permitAll());
-        http.formLogin((form) -> form
-        .loginPage("/login")
-        .permitAll());
+        http.formLogin((login) ->login.loginPage("/login").permitAll());
     return http.build();
     }
     
