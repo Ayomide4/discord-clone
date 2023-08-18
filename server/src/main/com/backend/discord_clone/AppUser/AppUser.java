@@ -21,7 +21,7 @@ import lombok.Setter;
 
 
 /**
- * Class for user implementing UserDetails
+ * Class for the app user implementing UserDetails
  */
 @Getter
 @Setter

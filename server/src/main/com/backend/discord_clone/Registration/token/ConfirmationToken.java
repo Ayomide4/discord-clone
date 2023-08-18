@@ -1,12 +1,9 @@
-package com.backend.discord_clone.Registration.token;
+package com.backend.discord_clone.Registration.Token;
 
 import java.time.LocalDateTime;
-
-import org.hibernate.annotations.ManyToAny;
-
 import com.backend.discord_clone.AppUser.AppUser;
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,9 +14,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+/**
+ * Creates confirmation token for AppUser Authentication. 
+ */
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 public class ConfirmationToken {
 
        //Defining allocation in database
@@ -27,20 +29,20 @@ public class ConfirmationToken {
         name = "Confirmation_token_sequence", 
         sequenceName = "Confirmation_token_sequence",
         allocationSize = 1
-
     )
-    //defining primary key in DB
     @Id
-     //Auto generate ID number
     @GeneratedValue(
         strategy =  GenerationType.SEQUENCE,
         generator = "Confirmation_token_sequence"
     )
     private long id;
+
     @Column(nullable = false)
     private String token;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
+    
     @Column(nullable = false)
     private LocalDateTime expiresAt;
     
@@ -59,6 +61,7 @@ public class ConfirmationToken {
       * @param createdAt Time the token was created at.
       * @param expiresAt Time the token expires. 
       * @param confirmedAt Time the token was confirmed at.
+      * @param appUser The app user.
       */
     public ConfirmationToken(LocalDateTime createdAt, 
     LocalDateTime expiresAt, 

@@ -40,7 +40,7 @@ public class AppUserService implements UserDetailsService{
     /**
      * Signs up New User
      * @param appUser The app user to sign up.
-     * @return
+     * @return Returns confirmation when post has been recieved.
      */
     public String signUpUser (AppUser appUser){
 
@@ -67,7 +67,7 @@ public class AppUserService implements UserDetailsService{
 
             //TODO:Send conformation Token
 
-
+            //return statement when post is sucessfully recieved.
             return "Registration Post Recieved";
     }
     

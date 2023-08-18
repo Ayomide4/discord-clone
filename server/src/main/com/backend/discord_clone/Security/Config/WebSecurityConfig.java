@@ -14,7 +14,9 @@ import com.backend.discord_clone.AppUser.AppUserService;
 
 import lombok.AllArgsConstructor;
 
-
+/**
+ * Application security configuration file (web based).
+ */
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
@@ -26,6 +28,12 @@ public class WebSecurityConfig{
     @Autowired
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Chain filter for all security being implemented.
+     * @param http Http security name space configuration.
+     * @return Returns http build to be implemented.
+     * @throws Exception Thrown by the execution of the method or constructor and propagate outside the method or constructor boundary.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf((csrf) -> csrf.disable());
@@ -35,11 +43,19 @@ public class WebSecurityConfig{
                     .requestMatchers("/api/v1/registration").permitAll()
                     .requestMatchers("/index/**").permitAll()
                     .anyRequest().permitAll());
+        //building default Login Page.
         http.formLogin((login) ->login.loginPage("/login").permitAll());
+
+        //returns (security) build.
     return http.build();
     }
     
 
+    /**
+     * Configures AuthenticationManagerBuilder.
+     * @param auth SecurityBuilder used to create an AuthenticationManager. 
+     * @throws Exception  Thrown by the execution of the method or constructor and propagate outside the method or constructor boundary.
+     */
     @Autowired
    public void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.authenticationProvider(daoAuthenticationProvider());
@@ -48,6 +64,10 @@ public class WebSecurityConfig{
 
 }
 
+/**
+ *  An AuthenticationProvider implementation that retrieves user details
+ * @return Returns the built DaoAuthenticationProvider. 
+ */
 public DaoAuthenticationProvider daoAuthenticationProvider (){
     DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
     provider.setPasswordEncoder(bCryptPasswordEncoder);
