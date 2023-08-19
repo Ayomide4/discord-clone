@@ -40,7 +40,7 @@ public class WebSecurityConfig{
         //Protects endpoints at /api/<type>/register
         http.authorizeHttpRequests(Configurer ->
                     Configurer
-                    .requestMatchers("/api/v1/registration").permitAll()
+                    .requestMatchers("/api/v*/registration**").permitAll()
                     .requestMatchers("/index/**").permitAll()
                     .anyRequest().permitAll());
         //building default Login Page.

@@ -1,11 +1,15 @@
 package com.backend.discord_clone.Registration;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.backend.discord_clone.AppUser.AppUser;
 import com.backend.discord_clone.AppUser.AppUserRole;
 import com.backend.discord_clone.AppUser.AppUserService;
+import com.backend.discord_clone.Registration.Token.ConfirmationToken;
+import com.backend.discord_clone.Registration.Token.ConfirmationTokenService;
 
 import lombok.AllArgsConstructor;
 
@@ -16,10 +20,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class RegistrationService {
 
-@Autowired
 private final AppUserService appUserService;
-@Autowired
 private final EmailValidation emailValidation;
+    private final ConfirmationTokenService confirmationTokenService;
+
 
 
 /**
@@ -46,6 +50,29 @@ private final EmailValidation emailValidation;
             AppUserRole.USER
         )
             );
+    }
+
+    @Transactional
+    public String confirmToken(String token) {
+        ConfirmationToken confirmationToken = confirmationTokenService
+                .getToken(token)
+                .orElseThrow(() ->
+                        new IllegalStateException("token not found"));
+
+        if (confirmationToken.getConfirmedAt() != null) {
+            throw new IllegalStateException("email already confirmed");
+        }
+
+        LocalDateTime expiredAt = confirmationToken.getExpiresAt();
+
+        if (expiredAt.isBefore(LocalDateTime.now())) {
+            throw new IllegalStateException("token expired");
+        }
+
+        confirmationTokenService.setConfirmedAt(token);
+        appUserService.enableAppUser(
+                confirmationToken.getAppUser().getEmail());
+        return "confirmed";
     }
 
 }

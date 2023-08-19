@@ -63,13 +63,12 @@ public class ConfirmationToken {
       * @param confirmedAt Time the token was confirmed at.
       * @param appUser The app user.
       */
-    public ConfirmationToken(LocalDateTime createdAt, 
+    public ConfirmationToken(String token, LocalDateTime createdAt, 
     LocalDateTime expiresAt, 
-    LocalDateTime confirmedAt,
     AppUser appUser) {
+        this.token = token;
         this.createdAt = createdAt;
         this.expiresAt = expiresAt;
-        this.confirmedAt = confirmedAt;
         this.appUser = appUser;
     }
     
