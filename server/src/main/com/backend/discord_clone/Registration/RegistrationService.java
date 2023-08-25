@@ -55,6 +55,7 @@ private final EmailSender emailSender;
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
         emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
         //return the user information to the database. 
+        System.out.println("Happened");
         return token;
     }
 
