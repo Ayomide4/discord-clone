@@ -1,17 +1,20 @@
 package com.backend.discord_clone;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 
+/**
+ * Controller for Discord Clone web application.
+ */
 @Controller
 public class DiscordCloneController {
 
+	/**
+	 * Creates mapping to /index
+	 * @return returns index from resources.
+	 */
 	@RequestMapping("/index")
-	public String index(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-			Model model) {
-		model.addAttribute("name", name);
+	public String index() {
 		return "index";
 	}
 
