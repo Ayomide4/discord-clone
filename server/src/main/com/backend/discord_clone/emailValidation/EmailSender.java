@@ -1,4 +1,4 @@
-package com.backend.discord_clone.email;
+package com.backend.discord_clone.emailValidation;
 
 public interface EmailSender {
     void send (String to, String email);

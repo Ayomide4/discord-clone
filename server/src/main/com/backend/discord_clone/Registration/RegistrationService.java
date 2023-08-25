@@ -10,7 +10,7 @@ import com.backend.discord_clone.AppUser.AppUserRole;
 import com.backend.discord_clone.AppUser.AppUserService;
 import com.backend.discord_clone.Registration.Token.ConfirmationToken;
 import com.backend.discord_clone.Registration.Token.ConfirmationTokenService;
-import com.backend.discord_clone.email.EmailSender;
+import com.backend.discord_clone.emailValidation.EmailSender;
 
 import lombok.AllArgsConstructor;
 

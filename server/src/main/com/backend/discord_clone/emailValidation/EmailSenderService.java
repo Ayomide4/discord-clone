@@ -1,4 +1,4 @@
-package com.backend.discord_clone.email;
+package com.backend.discord_clone.emailValidation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
