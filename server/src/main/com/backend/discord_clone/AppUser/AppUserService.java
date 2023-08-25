@@ -23,11 +23,10 @@ import lombok.AllArgsConstructor;
 public class AppUserService implements UserDetailsService{
     private final static String USER_NOT_FOUND_MSG = "user email %s not found";
 
-    
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
-
+    
     /**
      * Gets User by their email.
      * 
@@ -52,12 +51,10 @@ public class AppUserService implements UserDetailsService{
         //Statement seeing if user email is already present within the database.
        boolean userExists =  appUserRepository
             .findByEmail(appUser.getEmail()).isPresent();
-
             //if the user(email) exists, then return it already exists.
             if(userExists) {
                 //TODO
                 //TODO
-
                 throw new IllegalStateException("Email Already Taken");
             }
 
@@ -87,5 +84,6 @@ public class AppUserService implements UserDetailsService{
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
-    
+
+
 }
