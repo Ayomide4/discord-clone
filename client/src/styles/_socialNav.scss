@@ -1,5 +1,80 @@
 .social-nav-container {
-  width: 20%;
+  width: 21%;
   height: 100%;
   background-color: #2b2d31;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .search-btn {
+    background-color: #1e1f22;
+    height: 30px;
+    width: 92%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    color: #90979f;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+    text-align: left;
+  }
+
+  .line {
+    width: 100%;
+    border-bottom: 2px solid #27292d;
+    margin-bottom: 0.5rem;
+  }
+
+  .friend-tab {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 2.75rem;
+    width: 92%;
+    cursor: pointer;
+    background-color: #4e505899;
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: #35373c;
+    }
+
+    .friend-icon {
+      width: 24px;
+      height: 24px;
+      margin-left: 0.5rem;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-left: 1rem;
+      color: #fff;
+    }
+  }
+
+  .direct-message-container {
+    height: 100%;
+    width: 92%;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+
+    .direct-message-title {
+      color: #90979f;
+      font-weight: 600;
+      font-size: 0.7rem;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        color: #dbdee1;
+      }
+    }
+
+    .poly {
+      cursor: pointer;
+    }
+  }
 }

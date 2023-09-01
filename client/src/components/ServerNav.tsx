@@ -4,7 +4,7 @@ export default function ServerNav() {
   return (
     <div className="server-nav-container">
       <div className="discord-btn">
-        <BsDiscord color="white" size={32} />
+        <BsDiscord color="white" size={26} />
       </div>
       <div className="line"></div>
       <div className="add-btn">
