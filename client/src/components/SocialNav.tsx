@@ -1,3 +1,4 @@
+import MessageList from "./MessageList";
 export default function SocialNav() {
   return (
     <div className="social-nav-container">
@@ -44,7 +45,7 @@ export default function SocialNav() {
             ></polygon>
           </svg>
         </div>
-        <div className="message-list"></div>
+        <MessageList />
       </div>
     </div>
   );
