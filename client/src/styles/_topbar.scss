@@ -1,0 +1,36 @@
+.topbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25%;
+    
+    .friend{
+        color: #F2F3F5;
+        font-weight: 500;
+        margin-left: 1rem;
+    }
+
+    .friend-icon-group{
+        display: flex;
+        align-items: center;
+    }
+
+    .wall{
+        border-left: 2px solid #3E4047;
+        height: 1.5rem;
+    }
+
+    .friend-icon{
+        width: 24px;
+        height: 24px;
+        margin-left: 0.5rem;
+    }
+
+    .add-friend{
+        color: #2CAC65;
+    }
+
+    p{
+        color: #B5BAC1;
+    }
+}
