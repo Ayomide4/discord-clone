@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Login({ setTrigger }: any) {
   const handleClick = () => {
     setTrigger((prev: boolean) => !prev);
+  };
+
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/");
   };
 
   return (
@@ -15,7 +22,9 @@ export default function Login({ setTrigger }: any) {
           <input type="email" id="email" />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" />
-          <button className="login-btn">Log In</button>
+          <button className="login-btn" onClick={handleLogin}>
+            Log In
+          </button>
         </form>
         <p>
           Need an account?
