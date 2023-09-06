@@ -1,11 +1,10 @@
-import { useState } from "react";
-import Login from "./pages/Login";
+import LoginPage from "./pages/LoginPage";
 import "./styles/App.scss";
 
 function App() {
   return (
     <div className="app">
-      <Login />
+      <LoginPage />
     </div>
   );
 }
