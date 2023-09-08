@@ -23,7 +23,7 @@ import com.backend.discord_clone.Security.Cookies.AuthEntryPointJwt;
 import lombok.AllArgsConstructor;
 
 /**
- * Application security configuration file (web based).
+ * WebSecurityConfig handles web security configuration.
  */
 @Configuration
 @AllArgsConstructor
@@ -31,13 +31,13 @@ import lombok.AllArgsConstructor;
 public class WebSecurityConfig{
 
     @Autowired
-    private final AppUserService appUserService;
+    private final AppUserService appUserService; //App user service.
 
     @Autowired
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;  //Password encoder.
 
     @Autowired
-    private static AuthEntryPointJwt unathorizedHandler;
+    private static AuthEntryPointJwt unathorizedHandler; //Unauthorized handler.
 
     /**
      * Chain filter for all security being implemented.
@@ -47,26 +47,28 @@ public class WebSecurityConfig{
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf((csrf) -> csrf.disable())
-        .exceptionHandling((exceptionHandling) -> exceptionHandling.authenticationEntryPoint(unathorizedHandler))
-        .sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.csrf((csrf) -> csrf.disable()) //Disables csrf.
+        .exceptionHandling((exceptionHandling) -> exceptionHandling.authenticationEntryPoint(unathorizedHandler)) //Handles unauthorized requests.
+        .sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); //Session creation policy.
 
-        //Protects endpoints at /api/<type>/register
+        //Authorize requests.
         http.authorizeHttpRequests(Configurer ->
                     Configurer
-                    .requestMatchers("/api/v*/registration**").permitAll()
-                    .requestMatchers("/index/**").permitAll()
-                    .requestMatchers("/login/**").permitAll()
-                    .anyRequest().authenticated());
-        //building default Login Page.
-        http.formLogin((login) ->login.loginPage("/login").permitAll());
-        http.authenticationProvider(daoAuthenticationProvider());
+                    .requestMatchers("/api/v*/registration**").permitAll() //Permits all requests to registration.
+                    .requestMatchers("/index/**").permitAll() //Permits all requests to index.
+                    .requestMatchers("/api/v*/login").permitAll() //Permits all requests to login.
+                    .anyRequest().authenticated()); //Any other request must be authenticated.
+        
+                    http.authenticationProvider(daoAuthenticationProvider()); //Authentication provider.
 
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-        //returns (security) build.
-    return http.build();
+                    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class); //Adds authentication filter before username and password authentication filter.
+            return http.build(); //Returns http build.
     }
     
+    /**
+     * Creates authentication token filter.
+     * @return Returns authentication token filter.
+     */
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
@@ -79,13 +81,19 @@ public class WebSecurityConfig{
      */
     @Autowired
    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.authenticationProvider(daoAuthenticationProvider());
-    auth.userDetailsService(appUserService);
+    auth.authenticationProvider(daoAuthenticationProvider()); //Authentication provider.
+    auth.userDetailsService(appUserService); //User details service.
     }
 
+    /**
+     * Authentication manager.
+     * @param auth Authentication configuration.
+     * @return Returns authentication manager.
+     * @throws Exception Thrown by the execution of the method or constructor and propagate outside the method or constructor boundary.
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
-        return auth.getAuthenticationManager();
+        return auth.getAuthenticationManager(); //Returns authentication manager.
     }
 
     /**
@@ -94,9 +102,9 @@ public class WebSecurityConfig{
      */
     public DaoAuthenticationProvider daoAuthenticationProvider (){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(bCryptPasswordEncoder);
-        provider.setUserDetailsService(appUserService);
-        return provider;
+        provider.setPasswordEncoder(bCryptPasswordEncoder); //Password encoder.
+        provider.setUserDetailsService(appUserService); //User details service.
+        return provider; //Returns provider.
     }
 
 }

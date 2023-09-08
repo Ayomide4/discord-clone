@@ -19,8 +19,11 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
+/**
+ * JwtUtils handles JWT token generation and validation.
+ */
 public class JwtUtils {
-    private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class); //Logger for logging events.
 
   private String jwtSecret;
 
@@ -28,6 +31,11 @@ public class JwtUtils {
 
   private String jwtCookie;
 
+  /**
+   * Gets JWT from HTTP Cookie.
+   * @param request JWT being passed in HTTP Cookie.
+   * @return Returns cookie value if cookie exists, else returns null.
+   */
   public String getJwtFromCookies(HttpServletRequest request) {
     Cookie cookie = WebUtils.getCookie(request, jwtCookie);
     if (cookie != null) {
@@ -37,26 +45,49 @@ public class JwtUtils {
     }
   }
  
+  /**
+   * Generates JWT cookie.
+   * @param userPrincipal User principal.
+   * @return Returns JWT cookie.
+   */
   public ResponseCookie generateJwtCookie(UserDetails userPrincipal) {
     String jwt = generateTokenFromUsername(userPrincipal.getUsername());
     ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).build();
     return cookie;
   }
 
+  /**
+   * Generates clean JWT cookie.
+   * @return Returns clean JWT cookie.
+   */
   public ResponseCookie getCleanJwtCookie() {
     ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
     return cookie;
   }
 
+  /**
+   * Gets username from JWT token.
+   * @param token JWT token.
+   * @return Returns username from JWT token.
+   */
   public String getUserNameFromJwtToken(String token) {
     return Jwts.parserBuilder().setSigningKey(key()).build()
         .parseClaimsJws(token).getBody().getSubject();
   }
   
+  /**
+   * Generates JWT token.
+   * @return Returns JWT token.
+   */
   private Key key() {
     return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
 
+  /**
+   * Validates JWT token.
+   * @param authToken JWT token.
+   * @return Returns true if JWT token is valid, else returns false.
+   */
   public boolean validateJwtToken(String authToken) {
     try {
       Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
@@ -74,6 +105,11 @@ public class JwtUtils {
     return false;
   }
   
+  /**
+   * Generates JWT token from username.
+   * @param username Username.
+   * @return Returns JWT token.
+   */
   public String generateTokenFromUsername(String username) {   
     return Jwts.builder()
               .setSubject(username)

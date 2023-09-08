@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.backend.discord_clone.Registration.RegistrationRequest;
 
 import lombok.AllArgsConstructor;
 
@@ -15,7 +14,7 @@ import lombok.AllArgsConstructor;
  * RegistrationController handles user registration.
  */
 @RestController
-@RequestMapping(path = "api/v1/Login")
+@RequestMapping(path = "api/v1/login")
 @AllArgsConstructor
 public class LoginController {
 
