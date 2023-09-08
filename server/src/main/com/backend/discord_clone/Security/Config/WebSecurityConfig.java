@@ -17,8 +17,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  
 
 import com.backend.discord_clone.AppUser.AppUserService;
+import com.backend.discord_clone.Security.Authentication.AuthEntryPointJwt;
 import com.backend.discord_clone.Security.Authentication.AuthTokenFilter;
-import com.backend.discord_clone.Security.Cookies.AuthEntryPointJwt;
 
 import lombok.AllArgsConstructor;
 
