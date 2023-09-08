@@ -1,0 +1,140 @@
+.social-hub-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+
+  h1,
+  h2,
+  h3,
+  .quiet {
+    color: #f2f3f5;
+  }
+
+  p {
+    color: #b5bac1;
+  }
+
+  .left {
+    border-right: 1px solid #3e4047;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    .add-friend-container {
+      border-bottom: 1px solid #3e4047;
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        margin: 1rem 0 1rem 1.5rem;
+      }
+      p {
+        margin: 0 0 1rem 1.5rem;
+      }
+
+      .add-friend-input {
+        width: 90%;
+        padding: 1rem;
+        border-radius: 12px;
+        background-color: #1e1f22;
+        align-self: center;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+
+        input {
+          width: 50%;
+          background-color: inherit;
+          font-size: 0.95rem;
+          border: none;
+          color: #dbdee1;
+        }
+        input:focus {
+          outline: none;
+        }
+
+        .submit-btn {
+          background-color: #5865f2;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+          padding: 0.5rem;
+        }
+      }
+    }
+
+    .test {
+      h3 {
+        margin: 1rem 0 1rem 1.5rem;
+      }
+    }
+
+    .discover-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-left: 1.5rem;
+      background-color: #2b2d31;
+      width: 42%;
+      border-radius: 10px;
+      border: 1px solid #3e4047;
+      padding: 0.3rem;
+
+      .explore-left {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+      }
+      .explore-icon {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #3ba55c;
+        border-radius: 5px;
+      }
+
+      p {
+        margin-left: 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #dbdee1;
+      }
+    }
+  }
+
+  .right {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+
+    .default-msg {
+      display: flex;
+      width: 94%;
+      height: 30%;
+      flex-direction: column;
+      text-align: center;
+
+      h3 {
+        text-align: left;
+        font-size: 1.3rem;
+      }
+
+      .quiet {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

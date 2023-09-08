@@ -1,0 +1,55 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 13%;
+
+    .icon path:hover {
+      fill: #dbdee1;
+    }
+  }
+
+  .friend {
+    color: #f2f3f5;
+    font-weight: 500;
+    margin-left: 1rem;
+  }
+
+  .friend-icon-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .wall {
+    border-left: 2px solid #3e4047;
+    height: 1.5rem;
+  }
+
+  .friend-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+  }
+
+  .add-friend {
+    color: #2cac65;
+  }
+
+  p {
+    color: #b5bac1;
+    font-size: 0.95rem;
+  }
+}

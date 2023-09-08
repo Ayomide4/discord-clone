@@ -1,8 +1,17 @@
 @import "./login.scss";
+@import "./messageList.scss";
 @import "./register.scss";
+@import "./socialHub.scss";
+@import "./home.scss";
+@import "./serverNav.scss";
+@import "./socialNav.scss";
+@import "./topbar.scss";
+@import "./socialDashboard.scss";
+
 body {
   padding: 0;
   margin: 0;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
   font-family: "Inter", sans-serif;
 }
