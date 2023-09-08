@@ -1,6 +1,7 @@
 package com.backend.discord_clone.Registration;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import lombok.ToString;
  /**
   * Information being inserted apon Post Request. 
   */
+  @Data
 public class RegistrationRequest {
 
     private final String firstName; 
