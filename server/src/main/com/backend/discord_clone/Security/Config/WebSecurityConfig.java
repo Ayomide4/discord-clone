@@ -4,13 +4,21 @@ package com.backend.discord_clone.Security.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+ 
+
 import com.backend.discord_clone.AppUser.AppUserService;
+import com.backend.discord_clone.Security.Authentication.AuthTokenFilter;
+import com.backend.discord_clone.Security.Cookies.AuthEntryPointJwt;
 
 import lombok.AllArgsConstructor;
 
@@ -28,6 +36,9 @@ public class WebSecurityConfig{
     @Autowired
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private static AuthEntryPointJwt unathorizedHandler;
+
     /**
      * Chain filter for all security being implemented.
      * @param http Http security name space configuration.
@@ -36,20 +47,30 @@ public class WebSecurityConfig{
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf((csrf) -> csrf.disable());
+        http.csrf((csrf) -> csrf.disable())
+        .exceptionHandling((exceptionHandling) -> exceptionHandling.authenticationEntryPoint(unathorizedHandler))
+        .sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
         //Protects endpoints at /api/<type>/register
         http.authorizeHttpRequests(Configurer ->
                     Configurer
                     .requestMatchers("/api/v*/registration**").permitAll()
                     .requestMatchers("/index/**").permitAll()
-                    .anyRequest().permitAll());
+                    .requestMatchers("/login/**").permitAll()
+                    .anyRequest().authenticated());
         //building default Login Page.
         http.formLogin((login) ->login.loginPage("/login").permitAll());
+        http.authenticationProvider(daoAuthenticationProvider());
 
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         //returns (security) build.
     return http.build();
     }
     
+    @Bean
+    public AuthTokenFilter authenticationJwtTokenFilter() {
+        return new AuthTokenFilter();
+    }
 
     /**
      * Configures AuthenticationManagerBuilder.
@@ -60,20 +81,23 @@ public class WebSecurityConfig{
    public void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.authenticationProvider(daoAuthenticationProvider());
     auth.userDetailsService(appUserService);
+    }
 
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration auth) throws Exception {
+        return auth.getAuthenticationManager();
+    }
 
-}
-
-/**
- *  An AuthenticationProvider implementation that retrieves user details
- * @return Returns the built DaoAuthenticationProvider. 
- */
-public DaoAuthenticationProvider daoAuthenticationProvider (){
-    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-    provider.setPasswordEncoder(bCryptPasswordEncoder);
-    provider.setUserDetailsService(appUserService);
-    return provider;
-}
+    /**
+     *  An AuthenticationProvider implementation that retrieves user details
+     * @return Returns the built DaoAuthenticationProvider. 
+     */
+    public DaoAuthenticationProvider daoAuthenticationProvider (){
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        provider.setUserDetailsService(appUserService);
+        return provider;
+    }
 
 }
 
