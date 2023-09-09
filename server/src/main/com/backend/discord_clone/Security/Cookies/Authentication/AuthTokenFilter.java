@@ -1,4 +1,4 @@
-package com.backend.discord_clone.Security.Authentication;
+package com.backend.discord_clone.Security.Cookies.Authentication;
 
 import java.io.IOException;
 

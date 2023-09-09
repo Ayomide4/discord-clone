@@ -24,36 +24,36 @@ import lombok.Setter;
 @Entity
 public class ConfirmationToken {
 
-       //Defining allocation in database
-    @SequenceGenerator(
-        name = "Confirmation_token_sequence", 
-        sequenceName = "Confirmation_token_sequence",
-        allocationSize = 1
+    @SequenceGenerator(    //Generates ID number for User
+        name = "Confirmation_token_sequence",  //Name of ID number
+        sequenceName = "Confirmation_token_sequence", //Name of sequence
+        allocationSize = 1 //How many ID numbers to generate
     )
+    
     @Id
-    @GeneratedValue(
-        strategy =  GenerationType.SEQUENCE,
-        generator = "Confirmation_token_sequence"
+    @GeneratedValue( //Generates ID number for User
+        strategy =  GenerationType.SEQUENCE, //Strategy for generating ID number
+        generator = "Confirmation_token_sequence" //Name of ID number generator
     )
-    private long id;
+    private long id; //Column for ID
 
-    @Column(nullable = false)
+    @Column(nullable = false) //Column for token
     private String token;
 
-    @Column(nullable = false)
+    @Column(nullable = false) //Column for created at
     private LocalDateTime createdAt;
     
-    @Column(nullable = false)
+    @Column(nullable = false) //Column for expires at
     private LocalDateTime expiresAt;
     
-    private LocalDateTime confirmedAt;
+    private LocalDateTime confirmedAt; //Column for confirmed at
 
     @ManyToOne
-    @JoinColumn(
+    @JoinColumn( //Joins App User to Confirmation Token
         nullable = false,
         name = "app_user_id"
     )
-    private AppUser appUser;
+    private AppUser appUser; //App User
 
 
      /**
@@ -64,12 +64,12 @@ public class ConfirmationToken {
       * @param appUser The app user.
       */
     public ConfirmationToken(String token, LocalDateTime createdAt, 
-    LocalDateTime expiresAt, 
+    LocalDateTime expiresAt,  
     AppUser appUser) {
-        this.token = token;
-        this.createdAt = createdAt;
-        this.expiresAt = expiresAt;
-        this.appUser = appUser;
+        this.token = token; //Token
+        this.createdAt = createdAt; //Created At
+        this.expiresAt = expiresAt; //Expires At
+        this.appUser = appUser; //App User
     }
     
     

@@ -34,52 +34,54 @@ private final EmailSender emailSender;
  * @return Returns Post Request confirmation.
  */
     public String register(RegistrationRequest request) {
-        boolean isValidEmail = emailValidation.test(request.getEmail());
+        boolean isValidEmail = emailValidation.test(request.getEmail()); //Checks if email is valid.
 
-        //if email is already in use:
-        if (!isValidEmail){
-            throw new IllegalStateException("Email not valid");
+        if (!isValidEmail){ //If email is not valid.
+            throw new IllegalStateException("Email not valid"); //Throw exception.
         }
 
-        String token = appUserService.signUpUser( 
-            new AppUser(
-            request.getFirstName(),
-            request.getLastName(),
-            request.getUserName(),
-            request.getEmail(),
-            request.getPassword(),
-            AppUserRole.USER
+        String token = appUserService.signUpUser(  //Signs up new User.
+            new AppUser( //Creates new AppUser.
+            request.getFirstName(), //Gets first name.
+            request.getLastName(), //Gets last name.
+            request.getUserName(), //Gets username.
+            request.getEmail(), //Gets email.
+            request.getPassword(), //Gets password.
+            AppUserRole.USER //Sets role to user.
         )
             );
 
-        String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
-        emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link));
-        //return the user information to the database. 
-        System.out.println("Happened");
-        return token;
+        String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token; //Link to confirm account.
+        emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link)); //Sends email to user.
+        return token; //Returns token.
     }
 
+    /**
+     * Confirms token.
+     * @param token The token to confirm.
+     * @return Returns confirmation when get has been recieved.
+     */
     @Transactional
     public String confirmToken(String token) {
-        ConfirmationToken confirmationToken = confirmationTokenService
-                .getToken(token)
-                .orElseThrow(() ->
-                        new IllegalStateException("token not found"));
+        ConfirmationToken confirmationToken = confirmationTokenService //Gets confirmation token.
+                .getToken(token) //Gets token.
+                .orElseThrow(() -> 
+                        new IllegalStateException("token not found")); //Throws exception if token is not found.
 
-        if (confirmationToken.getConfirmedAt() != null) {
-            throw new IllegalStateException("email already confirmed");
+        if (confirmationToken.getConfirmedAt() != null) { //If token is already confirmed.
+            throw new IllegalStateException("email already confirmed"); //Throw exception.
         }
 
-        LocalDateTime expiredAt = confirmationToken.getExpiresAt();
+        LocalDateTime expiredAt = confirmationToken.getExpiresAt(); //Gets expired at.
 
-        if (expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("token expired");
+        if (expiredAt.isBefore(LocalDateTime.now())) { //If expired at is before now.
+            throw new IllegalStateException("token expired"); //Throw exception.
         }
 
-        confirmationTokenService.setConfirmedAt(token);
-        appUserService.enableAppUser(
-                confirmationToken.getAppUser().getEmail());
-        return "confirmed";
+        confirmationTokenService.setConfirmedAt(token); //Sets confirmed at.
+        appUserService.enableAppUser( //Enables app user.
+                confirmationToken.getAppUser().getEmail()); //Gets app user email.
+        return "confirmed"; //Returns confirmed.
     }
 
     /**

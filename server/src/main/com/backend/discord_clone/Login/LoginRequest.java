@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * LoginRequest class is the class for the Login Request.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,7 +17,7 @@ import lombok.ToString;
 @ToString
 @Data
 public class LoginRequest {
-    private final String userName;
-    private final String password;
+    private final String userName; //Username of User
+    private final String password; //Password of User
     
 }

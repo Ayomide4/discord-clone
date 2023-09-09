@@ -8,15 +8,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Provides User data by their email.
+ * AppUserRepository is the repository for the AppUser class.
  */
-@Transactional(readOnly = true)
+@Transactional(readOnly = true) //Makes all methods in this class read only
 public interface AppUserRepository extends JpaRepository<AppUser, Long>{
-    Optional<AppUser> findByEmail(String email);
+    Optional<AppUser> findByEmail(String email); //Finds User by email
 
     @Transactional
     @Modifying
     @Query("UPDATE AppUser a " +
-            "SET a.enabled = TRUE WHERE a.email = ?1")
-    int enableAppUser(String email);
+            "SET a.enabled = TRUE WHERE a.email = ?1") //Query to enable User
+    int enableAppUser(String email); //Enables User by email.
 }

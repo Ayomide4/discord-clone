@@ -17,8 +17,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  
 
 import com.backend.discord_clone.AppUser.AppUserService;
-import com.backend.discord_clone.Security.Authentication.AuthEntryPointJwt;
-import com.backend.discord_clone.Security.Authentication.AuthTokenFilter;
+import com.backend.discord_clone.Security.Cookies.Authentication.AuthEntryPointJwt;
+import com.backend.discord_clone.Security.Cookies.Authentication.AuthTokenFilter;
 
 import lombok.AllArgsConstructor;
 
@@ -53,7 +53,7 @@ public class WebSecurityConfig{
 
         //Authorize requests.
         http.authorizeHttpRequests(Configurer ->
-                    Configurer
+                    Configurer //Configures requests.
                     .requestMatchers("/api/v*/registration**").permitAll() //Permits all requests to registration.
                     .requestMatchers("/index/**").permitAll() //Permits all requests to index.
                     .requestMatchers("/api/v*/login").permitAll() //Permits all requests to login.
@@ -71,7 +71,7 @@ public class WebSecurityConfig{
      */
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
-        return new AuthTokenFilter();
+        return new AuthTokenFilter(); //Returns authentication token filter.
     }
 
     /**
@@ -101,7 +101,7 @@ public class WebSecurityConfig{
      * @return Returns the built DaoAuthenticationProvider. 
      */
     public DaoAuthenticationProvider daoAuthenticationProvider (){
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(); //Creates DaoAuthenticationProvider.
         provider.setPasswordEncoder(bCryptPasswordEncoder); //Password encoder.
         provider.setUserDetailsService(appUserService); //User details service.
         return provider; //Returns provider.

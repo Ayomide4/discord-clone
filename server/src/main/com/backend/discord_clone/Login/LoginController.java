@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
  * RegistrationController handles user registration.
  */
 @RestController
-@RequestMapping(path = "api/v1/login")
+@RequestMapping(path = "api/v1/login") //Path for the controller.
 @AllArgsConstructor
 public class LoginController {
 
