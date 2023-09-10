@@ -5,9 +5,11 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseCookie;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.util.WebUtils;
+
+import com.backend.discord_clone.AppUser.AppUser;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -22,6 +24,7 @@ import jakarta.servlet.http.HttpServletRequest;
 /**
  * JwtUtils handles JWT token generation and validation.
  */
+@Configuration
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class); //Logger for logging events.
 
@@ -44,25 +47,25 @@ public class JwtUtils {
       return null;
     }
   }
- 
-  /**
-   * Generates JWT cookie.
-   * @param userPrincipal User principal.
-   * @return Returns JWT cookie.
-   */
-  public ResponseCookie generateJwtCookie(UserDetails userPrincipal) {
-    String jwt = generateTokenFromUsername(userPrincipal.getUsername());
-    ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).build();
-    return cookie;
-  }
+
+    /**
+     * Generates JWT cookie.
+     * @param userPrincipal User principal.
+     * @return Returns JWT cookie.
+     */
+    public ResponseCookie generateJwtCookie(AppUser userPrincipal) {
+      String jwt = generateTokenFromUsername(userPrincipal.getUsername());
+      ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).build();
+      return cookie;
+    }
 
   /**
    * Generates clean JWT cookie.
    * @return Returns clean JWT cookie.
    */
   public ResponseCookie getCleanJwtCookie() {
-    ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
-    return cookie;
+    ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build(); //Generates clean JWT cookie.
+    return cookie; //Returns clean JWT cookie.
   }
 
   /**
@@ -71,16 +74,16 @@ public class JwtUtils {
    * @return Returns username from JWT token.
    */
   public String getUserNameFromJwtToken(String token) {
-    return Jwts.parserBuilder().setSigningKey(key()).build()
-        .parseClaimsJws(token).getBody().getSubject();
+    return Jwts.parserBuilder().setSigningKey(key()).build() //Gets username from JWT token.
+        .parseClaimsJws(token).getBody().getSubject(); //Gets username from JWT token.
   }
   
   /**
    * Generates JWT token.
    * @return Returns JWT token.
    */
-  private Key key() {
-    return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+  private Key key() { 
+    return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret)); //Generates JWT token.
   }
 
   /**

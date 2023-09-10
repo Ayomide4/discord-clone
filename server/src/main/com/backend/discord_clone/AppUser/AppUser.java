@@ -35,15 +35,15 @@ public class AppUser implements UserDetails{
         name = "id_sequence", //Name of ID number
         sequenceName = "id_sequence", //Name of sequence
         allocationSize = 1 //How many ID numbers to generate
-
     )
-    
     @Id 
+
     @GeneratedValue( //Generates ID number for User
         strategy =  GenerationType.SEQUENCE, //Strategy for generating ID number
         generator = "id_sequence" //Name of ID number generator
     )
     private Long id; //ID number for User
+    
     private String firstName; //First Name of User
     private String lastName; //Last Name of User
     private String userName; //Username of User
@@ -65,6 +65,7 @@ public class AppUser implements UserDetails{
      * @param password Password of User
      * @param appUserRole User Role of User
      */
+    
     public AppUser(String firstName, String lastName, String userName, String email, String password, AppUserRole appUserRole) {
         this.firstName = firstName; //Sets First Name of User
         this.lastName = lastName; //Sets Last Name of User
@@ -93,6 +94,7 @@ public class AppUser implements UserDetails{
     public String getPassword() {
         return password; //Gets and returns Password of the User.
     }
+
 
     /**
      * Gets and returns Username of the User.
@@ -163,6 +165,8 @@ public class AppUser implements UserDetails{
     public boolean isEnabled() {
         return enabled; //Verifys if account is active for User.
     }
+
+
 
 
 

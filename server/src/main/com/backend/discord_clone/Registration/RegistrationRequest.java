@@ -18,7 +18,6 @@ import lombok.ToString;
   */
   @Data
 public class RegistrationRequest {
-
     private final String firstName; //First Name of User
     private final String lastName;  //Last Name of User
     private final String email;    //Email of User

@@ -18,7 +18,6 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint{
 
     private static Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class); //Logger for logging events.
 
-    
     /**
      * Handles unauthorized requests.
      */
