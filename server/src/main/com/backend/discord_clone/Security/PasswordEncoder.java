@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * Encrypts the password.
+ * PasswordEncoder is the class for password encoding.
  */
 @Configuration
 public class PasswordEncoder{
@@ -16,7 +16,7 @@ public class PasswordEncoder{
      */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder (){
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); //Returns new instance of BCryptPasswordEncoder.
     }
         
 }

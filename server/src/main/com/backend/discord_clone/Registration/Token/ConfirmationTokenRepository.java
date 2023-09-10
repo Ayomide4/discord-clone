@@ -9,16 +9,17 @@ import org.springframework.data.jpa.repository.Query;
 
 import jakarta.transaction.Transactional;
 
-
+/**
+ * ConfirmationTokenRepository is the repository for the ConfirmationToken class.
+ */
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Long> {
-    Optional<ConfirmationToken> findByToken(String Token);
+    Optional<ConfirmationToken> findByToken(String Token); //Finds token by token.
     
     @Transactional
     @Modifying
-    @Query("UPDATE ConfirmationToken c " +
+    @Query("UPDATE ConfirmationToken c " + //Updates token
             "SET c.confirmedAt = ?2 " +
             "WHERE c.token = ?1")
-    int updateConfirmedAt(String token,
-                          LocalDateTime confirmedAt);
+    int updateConfirmedAt(String token, LocalDateTime confirmedAt); //Updates confirmed at.
 }
 

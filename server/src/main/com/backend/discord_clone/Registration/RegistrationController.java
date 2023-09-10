@@ -1,5 +1,6 @@
 package com.backend.discord_clone.Registration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +15,11 @@ import lombok.AllArgsConstructor;
  * RegistrationController handles user registration.
  */
 @RestController
-@RequestMapping(path = "api/v1/registration")
+@RequestMapping(path = "api/v1/registration") //Path for the controller.
 @AllArgsConstructor
 public class RegistrationController {
 
+    @Autowired
     private final RegistrationService registrationService;
 
     /**
@@ -25,13 +27,18 @@ public class RegistrationController {
      * @param request The request body Information. 
      * @return return Post Request confirmation.
      */
-    @PostMapping
+    @PostMapping //Post Request.
     public String register(@RequestBody RegistrationRequest request) {
-        return registrationService.register(request);
+        return registrationService.register(request); //Returns registrationService.register.
     }
 
-    @GetMapping(path="confirm")
+    /**
+     * Confirm is the confirm Request for a new User.
+     * @param token The token to confirm.
+     * @return return Get Request confirmation.
+     */
+    @GetMapping(path="confirm") //Get Request. 
     public String confirm (@RequestParam("token") String token){
-        return registrationService.confirmToken(token);
+        return registrationService.confirmToken(token); //Returns registrationService.confirmToken.
     }
 }

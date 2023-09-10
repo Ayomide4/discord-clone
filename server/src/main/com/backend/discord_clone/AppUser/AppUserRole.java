@@ -1,9 +1,9 @@
 package com.backend.discord_clone.AppUser;
 
 /**
- * AppUser Roles.
+ * AppUserRole is the enum for the User Role.
  */
 public enum AppUserRole {
-    USER,
-    ADMIN
+    USER, //User Role for User
+    ADMIN //User Role for Admin
 }

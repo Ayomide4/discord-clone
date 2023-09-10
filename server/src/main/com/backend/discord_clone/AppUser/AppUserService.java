@@ -3,6 +3,7 @@ package com.backend.discord_clone.AppUser;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,15 +17,20 @@ import lombok.AllArgsConstructor;
 
 
 /**
- * AppUser Service class which implements UserDetailsService provides a security from user information.
+ * AppUserService is the service for the AppUser class.
  */
 @Service
 @AllArgsConstructor
 public class AppUserService implements UserDetailsService{
-    private final static String USER_NOT_FOUND_MSG = "user email %s not found";
+    private final static String USER_NOT_FOUND_MSG = "user email %s not found"; //Message for if User is not found.
 
+    @Autowired
     private final AppUserRepository appUserRepository;
+
+    @Autowired
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
     private final ConfirmationTokenService confirmationTokenService;
     
     /**
@@ -35,10 +41,10 @@ public class AppUserService implements UserDetailsService{
      * @return Returns Users information by the Users email.
      */
     @Override
-    public UserDetails loadUserByUsername(String email)
-     throws UsernameNotFoundException {
-        return appUserRepository.findByEmail(email)
-        .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email )));
+    public UserDetails loadUserByUsername(String email) 
+     throws UsernameNotFoundException { //Throws exception if User is not found.
+        return appUserRepository.findByEmail(email) //Gets User by email.
+        .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email ))); //Throws exception if User is not found.
     }
 
     /**
@@ -48,40 +54,36 @@ public class AppUserService implements UserDetailsService{
      */
     public String signUpUser (AppUser appUser){
 
-        //Statement seeing if user email is already present within the database.
-       boolean userExists =  appUserRepository
-            .findByEmail(appUser.getEmail()).isPresent();
+       boolean userExists =  appUserRepository 
+            .findByEmail(appUser.getEmail()).isPresent(); //Checks if user exists by email.
             //if the user(email) exists, then return it already exists.
-            if(userExists) {
-                //TODO: Add what to do if user exists
-                throw new IllegalStateException("Email Already Taken");
-            }
+        if(userExists) {
+            //TODO: Add what to do if user exists
+            throw new IllegalStateException("Email Already Taken"); //Throws exception if User already exists.
+        }
 
-            //Getting user password and encryting it. 
-            String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
+        String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword()); //Getting user password and encryting it. 
+        appUser.setPassword(encodedPassword); //setting user password to the encoded password in the database. 
+        appUserRepository.save(appUser); //saving new user to database.
 
-            //setting user password to the encoded password in the database. 
-            appUser.setPassword(encodedPassword);
-
-            //saving new user to database.
-            appUserRepository.save(appUser);
-
-
-            String token = UUID.randomUUID().toString();
-            ConfirmationToken confirmationToken = new ConfirmationToken(
-                token, 
-                LocalDateTime.now(), 
-                LocalDateTime.now().plusMinutes(15), 
-                appUser);
-                
-            confirmationTokenService.saveConfirmationToken(confirmationToken);
-
-            //return statement when post is sucessfully recieved.
-            return token;
+        String token = UUID.randomUUID().toString(); //generating random token for user.
+        ConfirmationToken confirmationToken = new ConfirmationToken( //creating new confirmation token for user.
+            token,  //token
+            LocalDateTime.now(),  //created at
+            LocalDateTime.now().plusMinutes(15),  //expires at
+            appUser); //user
+            
+        confirmationTokenService.saveConfirmationToken(confirmationToken); //saving confirmation token to database.
+        return token; //returning token.
     }
 
+    /**
+     * Confirms User by token.
+     * @param email User Email.
+     * @return Returns confirmation when post has been recieved.
+     */
     public int enableAppUser(String email) {
-        return appUserRepository.enableAppUser(email);
+        return appUserRepository.enableAppUser(email); //Confirms User by token.
     }
 
 
