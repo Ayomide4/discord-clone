@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseCookie;
 import org.springframework.web.util.WebUtils;
@@ -27,11 +28,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @Configuration
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class); //Logger for logging events.
-
+  
+  @Value("${security.jwt.secret}")
   private String jwtSecret;
 
+  @Value("${security.jwt.expiration}")
   private int jwtExpirationMs;
 
+  @Value("${security.jwt.cookieName}")
   private String jwtCookie;
 
   /**
