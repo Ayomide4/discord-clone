@@ -36,16 +36,13 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<?> login(@RequestBody LoginRequest request) { //Handles user login.
         Authentication authentication = authenticationManager
-        .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())); //Authenticates user.
+        .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())); //Authenticates user login (checks if user exists and password is correct
 
         SecurityContextHolder.getContext().setAuthentication(authentication); //Sets authentication context.
         AppUser appUser = (AppUser) authentication.getPrincipal(); //Gets user principal.
         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(appUser); //Generates JWT cookie.
 
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-        .body(new LoginResponse(
-            appUser.getEmail(), 
-            appUser.getPassword())); //Returns login response.
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString()).build(); //Returns response.
     }
     
     

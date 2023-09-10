@@ -37,7 +37,7 @@ public class WebSecurityConfig{
     private final BCryptPasswordEncoder bCryptPasswordEncoder;  //Password encoder.
 
     @Autowired
-    private static AuthEntryPointJwt unathorizedHandler; //Unauthorized handler.
+    private final AuthEntryPointJwt unathorizedHandler; //Unauthorized handler.
 
     /**
      * Chain filter for all security being implemented.
@@ -57,7 +57,7 @@ public class WebSecurityConfig{
                     .requestMatchers("/api/v*/registration**").permitAll() //Permits all requests to registration.
                     .requestMatchers("/index/**").permitAll() //Permits all requests to index.
                     .requestMatchers("/api/v*/login").permitAll() //Permits all requests to login.
-                    .anyRequest().authenticated()); //Any other request must be authenticated.
+                    .anyRequest().permitAll()); //Any other request must be authenticated.
         
                     http.authenticationProvider(daoAuthenticationProvider()); //Authentication provider.
 
