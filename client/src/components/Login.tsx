@@ -1,13 +1,15 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 export default function Login({ setTrigger }: any) {
   const handleClick = () => {
     setTrigger((prev: boolean) => !prev);
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleLogin = () => {
-    navigate("/");
+    axios.post("http://localhost:8080/api/register").then((res) => {
+      console.log(res);
+    });
   };
 
   return (
