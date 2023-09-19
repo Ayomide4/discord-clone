@@ -18,6 +18,8 @@ import lombok.AllArgsConstructor;
  */
 @RestController
 @RequestMapping(path = "api/v1/registration") //Path for the controller.
+@CrossOrigin(origins = "http://localhost:5173")
+
 @AllArgsConstructor
 public class RegistrationController {
 
@@ -25,7 +27,6 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @GetMapping("hello")
-    @CrossOrigin(origins = "http://localhost:5173")
     public String hello(){
         return "hello";
     }
