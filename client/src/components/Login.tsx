@@ -6,9 +6,11 @@ export default function Login({ setTrigger }: any) {
   };
 
   // const navigate = useNavigate();
-  const handleLogin = () => {
-    axios.post("http://localhost:8080/api/register").then((res) => {
-      console.log(res);
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+
+    axios.get("http://localhost:8080/api/v1/registration/test").then((res) => {
+      console.log(res.data);
     });
   };
 
