@@ -6,10 +6,12 @@ export default function Login({ setTrigger }: any) {
   };
 
   // const navigate = useNavigate();
+
   const handleLogin = (e: any) => {
     e.preventDefault();
 
     axios.get("http://localhost:8080/api/v1/registration/hello").then((res) => {
+
       console.log(res.data);
     });
   };
