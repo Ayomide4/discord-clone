@@ -58,10 +58,11 @@ public class WebSecurityConfig{
                     .requestMatchers("/index/**").permitAll() //Permits all requests to index.
                     .requestMatchers("/api/v*/login").permitAll() //Permits all requests to login.
                     .anyRequest().permitAll()); //Any other request must be authenticated.
+        http.cors(cors -> cors.disable()); //Disables cors.
         
-                    http.authenticationProvider(daoAuthenticationProvider()); //Authentication provider.
+        http.authenticationProvider(daoAuthenticationProvider()); //Authentication provider.
 
-                    http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class); //Adds authentication filter before username and password authentication filter.
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class); //Adds authentication filter before username and password authentication filter.
             return http.build(); //Returns http build.
     }
     
