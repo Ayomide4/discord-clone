@@ -39,6 +39,7 @@
 
       .dateOfBirth {
         display: flex;
+        border: 1px solid red;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2rem;
@@ -56,6 +57,28 @@
 
           p {
             color: #b5bac1;
+          }
+        }
+        .months {
+          background-color: #27292d;
+          top: 40%;
+          height: 10rem;
+          overflow-y: scroll;
+          width: 8rem;
+          position: absolute;
+
+          div {
+            display: flex;
+            align-items: center;
+            height: 2rem;
+          }
+          p {
+            color: #b5bac1;
+            margin-left: 0.5rem;
+          }
+          div:hover {
+            background-color: #36383d;
+            cursor: pointer;
           }
         }
       }

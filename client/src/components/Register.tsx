@@ -51,6 +51,44 @@ export default function Register({ setTrigger }: any) {
               <p>Month</p>
               <SlArrowDown color="#b5bac1" size={12} />
             </div>
+            <div className="months">
+              <div>
+                <p>January</p>
+              </div>
+              <div>
+                <p>February</p>
+              </div>
+              <div>
+                <p>March</p>
+              </div>
+              <div>
+                <p>April</p>
+              </div>
+              <div>
+                <p>May</p>
+              </div>
+              <div>
+                <p>June</p>
+              </div>
+              <div>
+                <p>July</p>
+              </div>
+              <div>
+                <p>August</p>
+              </div>
+              <div>
+                <p>September</p>
+              </div>
+              <div>
+                <p>October</p>
+              </div>
+              <div>
+                <p>November</p>
+              </div>
+              <div>
+                <p>December</p>
+              </div>
+            </div>
             <div className="dateBlock">
               <p>Day</p>
               <SlArrowDown color="#b5bac1" size={12} />
