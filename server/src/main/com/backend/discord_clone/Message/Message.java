@@ -1,6 +1,10 @@
 package com.backend.discord_clone.Message;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +19,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class Message {
+    @SequenceGenerator(     //Generates ID number for Message
+        name = "id_sequence", //Name of ID number
+        sequenceName = "id_sequence", //Name of sequence
+        allocationSize = 1 //How many ID numbers to generate
+    )
+    @Id 
+
+    @GeneratedValue( //Generates ID number for Message
+        strategy =  GenerationType.SEQUENCE, //Strategy for generating ID number
+        generator = "id_sequence" //Name of ID number generator
+    )
+    private Long id; //ID number for Message
     private String message; //Message content.
     private String sender; //Message sender.
     private String receiver; //Message receiver.
