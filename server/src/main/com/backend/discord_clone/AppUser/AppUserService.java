@@ -58,7 +58,6 @@ public class AppUserService implements UserDetailsService{
             .findByEmail(appUser.getEmail()).isPresent(); //Checks if user exists by email.
             //if the user(email) exists, then return it already exists.
         if(userExists) {
-            //TODO: Add what to do if user exists
             throw new IllegalStateException("Email Already Taken"); //Throws exception if User already exists.
         }
 
@@ -86,5 +85,12 @@ public class AppUserService implements UserDetailsService{
         return appUserRepository.enableAppUser(email); //Confirms User by token.
     }
 
-
+    // public boolean validUser (String userName) {
+    //     boolean userExists =  appUserRepository 
+    //         .findByEmail(appUser.getUsername()).isPresent(); //Checks if user exists by email.
+    //         //if the user(email) exists, then return it already exists.
+    //     if(userExists)
+    //         return true;
+    //     return false;   
+    //     }
 }

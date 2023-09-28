@@ -25,11 +25,6 @@ public class RegistrationController {
     @Autowired
     private final RegistrationService registrationService;
 
-    @GetMapping("hello")
-    public String hello(){
-        return "hello";
-    }
-
     /**
      * Register is the register Request for a new User. 
      * @param request The request body Information. 

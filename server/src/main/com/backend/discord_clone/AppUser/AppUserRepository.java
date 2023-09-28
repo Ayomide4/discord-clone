@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true) //Makes all methods in this class read only
 public interface AppUserRepository extends JpaRepository<AppUser, Long>{
     Optional<AppUser> findByEmail(String email); //Finds User by email
+    Optional<AppUser> findByUserName(String userName); //Finds User by email
 
     @Transactional
     @Modifying

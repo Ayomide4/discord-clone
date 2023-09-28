@@ -14,10 +14,11 @@ import lombok.AllArgsConstructor;
 @CrossOrigin(origins = "http://localhost:5173")
 @AllArgsConstructor
 public class MessageController {
+    private final MessageService messageService;
 
     @PostMapping
-    public ResponseEntity <String> sendMessage(@RequestBody MessageRequest request) {
-        return ResponseEntity.ok("Message sent");
+    public ResponseEntity<String> sendMessage(@RequestBody MessageRequest request) {
+        return ResponseEntity.ok(messageService.sendMessage(request));
     }
 
 

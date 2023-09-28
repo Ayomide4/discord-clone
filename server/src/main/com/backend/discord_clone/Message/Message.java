@@ -1,5 +1,8 @@
 package com.backend.discord_clone.Message;
 
+
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,9 +35,12 @@ public class Message {
     )
     private Long id; //ID number for Message
     private String message; //Message content.
+    @Column(name = "Sender", nullable = false)
     private String sender; //Message sender.
+    @Column(name = "Receiver", nullable = false)
     private String receiver; //Message receiver.
     private String timestamp; //Message timestamp.
+    @Column(name = "Channel", nullable = false)
     private String channel; //Message channel.
     
     /**
