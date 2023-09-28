@@ -1,7 +1,6 @@
 package com.backend.discord_clone.Message;
 
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
