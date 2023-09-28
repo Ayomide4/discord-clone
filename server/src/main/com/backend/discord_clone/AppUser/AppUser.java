@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -46,8 +47,11 @@ public class AppUser implements UserDetails{
     
     private String firstName; //First Name of User
     private String lastName; //Last Name of User
+     @Column(name = "UserName", nullable = false)
     private String userName; //Username of User
+    @Column(name = "Email", nullable = false)
     private String email; //Email of User
+    @Column(name = "Password", nullable = false)
     private String password; //Password of User
     @Enumerated(EnumType.STRING) //Enum for User Role
     private AppUserRole appUserRole; //User Role of User 
