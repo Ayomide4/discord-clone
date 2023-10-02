@@ -3,7 +3,9 @@ export const INITIAL_STATE = {
   password: "",
   username: "",
   displayName: "",
-  dateOfBirth: "",
+  month: "",
+  day: "",
+  year: "",
 };
 
 export const FormReducer = (state: any, action: any) => {

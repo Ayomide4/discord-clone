@@ -5,6 +5,7 @@ import { INITIAL_STATE, FormReducer } from "./FormReducer";
 
 export default function Login({ setTrigger }: any) {
   const [state, dispatch] = useReducer(FormReducer, INITIAL_STATE);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setTrigger((prev: boolean) => !prev);
@@ -26,6 +27,7 @@ export default function Login({ setTrigger }: any) {
 
   const handleLogin = (e: any) => {
     e.preventDefault();
+    navigate("/home");
 
     // axios.get("http://localhost:8080/api/v1/registration/hello").then((res) => {
     //   console.log(res.data);
@@ -39,7 +41,7 @@ export default function Login({ setTrigger }: any) {
           <h3 className="login-title">Welcome back!</h3>
           <h4>We're so excited to see you again!</h4>
         </div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={(e) => handleLogin(e)}>
           <label htmlFor="email">Email</label>
           <input
             type="email"
