@@ -1,6 +1,7 @@
 import ServerNav from "../components/ServerNav";
 import SocialNav from "../components/SocialNav";
 import SocialDashboard from "../components/SocialDashboard";
+import CreateServerModal from "../components/CreateServerModal";
 
 export default function HomePage() {
   return (
@@ -8,6 +9,7 @@ export default function HomePage() {
       <ServerNav />
       <SocialNav />
       <SocialDashboard />
+      <CreateServerModal />
     </div>
   );
 }
