@@ -52,7 +52,7 @@ private final EmailSender emailSender;
             );
 
         String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token; //Link to confirm account.
-        emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link)); //Sends email to user.
+        emailSender.send(request.getEmail(), buildEmail(request.getFirstName(), link)); //Sends email to User.
         return "Account Reached"; //Returns token.
     }
 

@@ -22,5 +22,11 @@ public class MessageController {
     }
 
 
+    //TODO: implement get post request for messages.
+    //TODO: Websocket implementation for both server and client.
+    //https://spring.io/guides/gs/messaging-stomp-websocket/
+    //Learn about websockets and brokers because sometimes they can be complicated
+    
+
     
 }
