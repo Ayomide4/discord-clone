@@ -57,6 +57,7 @@ public class WebSecurityConfig{
                     .requestMatchers("/api/v*/registration**").permitAll() //Permits all requests to registration.
                     .requestMatchers("/index/**").permitAll() //Permits all requests to index.
                     .requestMatchers("/api/v*/login").permitAll() //Permits all requests to login.
+                    .requestMatchers("/api/v*/message").permitAll() //Permits all requests to message.
                     .anyRequest().permitAll()); //Any other request must be authenticated.
         http.cors(cors -> cors.disable()); //Disables cors.
         
