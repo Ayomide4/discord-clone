@@ -56,7 +56,7 @@ public class AppUser implements UserDetails{
     @Enumerated(EnumType.STRING) //Enum for User Role
     private AppUserRole appUserRole; //User Role of User 
     private Boolean locked = false; //Boolean for if User is locked
-    private Boolean enabled = false; //Boolean for if User is enabled
+    private Boolean enabled = true; //Boolean for if User is enabled
 
     
 
