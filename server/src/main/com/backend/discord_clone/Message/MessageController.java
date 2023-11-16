@@ -1,8 +1,9 @@
 package com.backend.discord_clone.Message;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,8 @@ import lombok.AllArgsConstructor;
 public class MessageController {
     private final MessageService messageService;
 
-    @PostMapping
+    @MessageMapping("api/v1/message")
+    @SendTo("/api/v1/chatRoom")
     public ResponseEntity<String> sendMessage(@RequestBody MessageRequest request) {
         return ResponseEntity.ok(messageService.sendMessage(request));
     }
