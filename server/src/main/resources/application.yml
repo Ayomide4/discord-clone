@@ -1,16 +1,12 @@
 server:
-
     error:
         include-message: always
         include-binding-errors: always
-
-
-
 spring:
     datasource:
-        password: 34884
-        url: jdbc:postgresql://localhost:5432/register
         username: postgres
+        password: admin
+        url: jdbc:postgresql://localhost:5432/discord_clone
     jpa:
         hibernate:
             ddl-auto: create-drop
@@ -19,24 +15,6 @@ spring:
                 dialect: org.hibernate.dialect.PostgreSQLDialect
         show-sql: true
     
-        
-    mail:
-        host: localhost
-        port: 1025
-        username: hello
-        password: hello
-
-        properties:
-            mail:
-                smtp:
-                ssl:
-                    trust: "*"
-                auth: true
-                starttls:
-                    enable: true
-                connectiontimeout: 5000
-                timeout: 3000
-                writetimeout: 5000
 security:
     jwt:
         secret: ======================Discord=Clone===========================

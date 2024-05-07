@@ -3,6 +3,7 @@ package com.backend.discord_clone.Security.Cookies;
 import java.security.Key;
 import java.util.Date;
 
+import com.backend.discord_clone.Model.AppUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseCookie;
 import org.springframework.web.util.WebUtils;
 
-import com.backend.discord_clone.AppUser.AppUser;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

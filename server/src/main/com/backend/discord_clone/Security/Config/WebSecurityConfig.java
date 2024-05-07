@@ -1,6 +1,7 @@
 package com.backend.discord_clone.Security.Config;
 
 
+import com.backend.discord_clone.Services.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
  
 
-import com.backend.discord_clone.AppUser.AppUserService;
 import com.backend.discord_clone.Security.Cookies.Authentication.AuthEntryPointJwt;
 import com.backend.discord_clone.Security.Cookies.Authentication.AuthTokenFilter;
 

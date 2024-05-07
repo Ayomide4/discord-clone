@@ -2,6 +2,7 @@ package com.backend.discord_clone.Security.Cookies.Authentication;
 
 import java.io.IOException;
 
+import com.backend.discord_clone.Services.AppUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.backend.discord_clone.AppUser.AppUserService;
 import com.backend.discord_clone.Security.Cookies.JwtUtils;
 
 import jakarta.servlet.FilterChain;
