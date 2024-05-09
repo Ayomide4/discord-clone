@@ -1,11 +1,18 @@
 .social-nav-container {
   width: 21%;
-  height: 100%;
+  height: 100vh;
   background-color: #2b2d31;
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  .top-bar {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .search-btn {
     background-color: #1e1f22;
     height: 30px;
@@ -14,7 +21,6 @@
     outline: none;
     cursor: pointer;
     color: #90979f;
-    margin: 0.5rem 0rem 0.7rem 0rem;
     text-align: left;
     border: none;
   }

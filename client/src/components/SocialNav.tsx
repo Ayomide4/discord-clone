@@ -2,7 +2,9 @@ import MessageList from "./MessageList";
 export default function SocialNav() {
   return (
     <div className="social-nav-container">
-      <button className="search-btn">Find or start a conversation</button>
+      <div className="top-bar">
+        <button className="search-btn">Find or start a conversation</button>
+      </div>
       <div className="line"></div>
       <div className="friend-tab">
         <svg
