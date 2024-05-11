@@ -1,4 +1,4 @@
-package com.backend.discord_clone.controllers;
+package com.backend.discord_clone.Controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

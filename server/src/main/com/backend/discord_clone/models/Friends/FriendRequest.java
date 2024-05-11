@@ -1,4 +1,4 @@
-package com.backend.discord_clone.models.Friends;
+package com.backend.discord_clone.Models.Friends;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

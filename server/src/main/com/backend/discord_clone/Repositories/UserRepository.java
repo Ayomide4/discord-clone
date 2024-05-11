@@ -1,7 +1,5 @@
 package com.backend.discord_clone.Repositories;
 
-import com.backend.discord_clone.models.User.User;
-
 import jakarta.transaction.Transactional;
 
 import java.util.Optional;
@@ -10,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.backend.discord_clone.Models.User.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {

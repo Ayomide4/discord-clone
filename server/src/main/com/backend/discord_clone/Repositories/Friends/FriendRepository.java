@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.backend.discord_clone.models.Friends.Friend;
+import com.backend.discord_clone.Models.Friends.Friend;
 
 import jakarta.transaction.Transactional;
 
