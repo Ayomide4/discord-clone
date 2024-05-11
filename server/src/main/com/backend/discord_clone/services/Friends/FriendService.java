@@ -5,15 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.backend.discord_clone.Interfaces.FriendInterface;
 import com.backend.discord_clone.Repositories.UserRepository;
-import com.backend.discord_clone.Repositories.Friends.FriendRepository;uest;
+import com.backend.discord_clone.Repositories.Friends.FriendRepository;
+import com.backend.discord_clone.Interfaces.FriendInterface;
+import com.backend.discord_clone.Models.Friends.AddFriendRequest;
+import com.backend.discord_clone.Models.Friends.AddFriendResponse;
+import com.backend.discord_clone.Models.Friends.GetFriendRequest;
 import com.backend.discord_clone.Models.Friends.GetFriendsReponse;
 import com.backend.discord_clone.Models.Friends.RemoveFriendRequest;
 import com.backend.discord_clone.Models.Friends.RemoveFriendResponse;
-import com.backend.discord_clone.Repositories.UserRepository;
-import com.backend.discord_clone.Repositories.Friends.FriendRepository;
-import com.backend.discord_clone.interfaces.FriendInterface;
+
 @Component
 public class FriendService implements FriendInterface{
 

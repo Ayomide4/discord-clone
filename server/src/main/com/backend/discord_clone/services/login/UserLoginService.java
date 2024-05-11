@@ -1,4 +1,4 @@
-package com.backend.discord_clone.Services.login;
+package com.backend.discord_clone.Services.Login;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -10,7 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.backend.discord_clone.Interfaces.LoginInterface;
-import com.backend.discord_clone.Repositories.UserRepository;ponse;
+import com.backend.discord_clone.Repositories.UserRepository;
+import com.backend.discord_clone.Models.User.CachedLoginResponse;
 import com.backend.discord_clone.Models.User.CreateUserRequest;
 import com.backend.discord_clone.Models.User.CreateUserResponse;
 import com.backend.discord_clone.Models.User.User;
@@ -18,8 +19,7 @@ import com.backend.discord_clone.Models.User.UserLoginCachedRequest;
 import com.backend.discord_clone.Models.User.UserLoginReponse;
 import com.backend.discord_clone.Models.User.UserLoginRequest;
 import com.backend.discord_clone.Models.User.UserRole;
-import com.backend.discord_clone.Repositories.UserRepository;
-import com.backend.discord_clone.interfaces.LoginInterface;
+
 
 @Component
 public class UserLoginService implements LoginInterface {
