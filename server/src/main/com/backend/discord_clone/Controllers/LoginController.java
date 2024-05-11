@@ -1,44 +1,47 @@
-package com.backend.discord_clone.Controllers;
+package com.backend.discord_clone.controllers;
 
-
-import com.backend.discord_clone.Model.AppUser;
-import com.backend.discord_clone.Model.LoginRequest;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import com.backend.discord_clone.interfaces.LoginInterface;
+import com.backend.discord_clone.models.User.CachedLoginResponse;
+import com.backend.discord_clone.models.User.CreateUserRequest;
+import com.backend.discord_clone.models.User.CreateUserResponse;
+import com.backend.discord_clone.models.User.UserLoginCachedRequest;
+import com.backend.discord_clone.models.User.UserLoginReponse;
+import com.backend.discord_clone.models.User.UserLoginRequest;
+import com.backend.discord_clone.services.login.UserLoginService;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.backend.discord_clone.Security.Cookies.JwtUtils;
-
-import lombok.AllArgsConstructor;
-
-@RestController
-@RequestMapping(path = "api/v1/login") //Path for the controller.
-@CrossOrigin(origins = "http://localhost:5173")
-@AllArgsConstructor
+@Controller
+@RequestMapping("/api/v1")
 public class LoginController {
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtils jwtUtils;
 
-    @PostMapping
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        Authentication authentication = authenticationManager
-        .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())); //Authenticates user login (checks if user exists and password is correct
+    private final LoginInterface loginService;
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        AppUser appUser = (AppUser) authentication.getPrincipal();
-        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(appUser);
+    public LoginController(@Autowired UserLoginService userLoginService) {
+        this.loginService = userLoginService;
+    }
 
-        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString()).build();
+    @PostMapping("/login")
+    public ResponseEntity<UserLoginReponse> login(@RequestBody UserLoginRequest userLoginRequest) {
+        return new ResponseEntity<>(loginService.login(userLoginRequest), HttpStatus.OK);
+    }
+
+    @PostMapping("/createUser")
+    public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserRequest createUserRequest) {
+        return new ResponseEntity<>(loginService.createUser(createUserRequest), HttpStatus.OK);
+    }
+
+    @PostMapping("/loginCached")
+    public ResponseEntity<CachedLoginResponse> loginCached(@RequestBody UserLoginCachedRequest userLoginCachedRequest) {
+        return new ResponseEntity<>(loginService.loginCachedUser(userLoginCachedRequest), HttpStatus.OK);
     }
     
-    
+
 }
