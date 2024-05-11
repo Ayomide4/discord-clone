@@ -1,4 +1,4 @@
-package com.backend.discord_clone.interfaces;
+package com.backend.discord_clone.Interfaces;
 
 import java.util.List;;
 

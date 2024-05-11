@@ -1,11 +1,11 @@
-package com.backend.discord_clone.interfaces;
+package com.backend.discord_clone.Interfaces;
 
-import com.backend.discord_clone.models.User.CachedLoginResponse;
-import com.backend.discord_clone.models.User.CreateUserRequest;
-import com.backend.discord_clone.models.User.CreateUserResponse;
-import com.backend.discord_clone.models.User.UserLoginReponse;
-import com.backend.discord_clone.models.User.UserLoginRequest;
-import com.backend.discord_clone.models.User.UserLoginCachedRequest;
+import com.backend.discord_clone.Models.User.CachedLoginResponse;
+import com.backend.discord_clone.Models.User.CreateUserRequest;
+import com.backend.discord_clone.Models.User.CreateUserResponse;
+import com.backend.discord_clone.Models.User.UserLoginCachedRequest;
+import com.backend.discord_clone.Models.User.UserLoginReponse;
+import com.backend.discord_clone.Models.User.UserLoginRequest;
 
 public interface LoginInterface {
     

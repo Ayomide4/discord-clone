@@ -1,4 +1,4 @@
-package com.backend.discord_clone.models.User;
+package com.backend.discord_clone.Models.User;
 
 import java.sql.Date;
 

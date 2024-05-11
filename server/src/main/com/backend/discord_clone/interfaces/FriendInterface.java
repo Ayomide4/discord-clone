@@ -1,11 +1,11 @@
-package com.backend.discord_clone.interfaces;
+package com.backend.discord_clone.Interfaces;
 
-import com.backend.discord_clone.models.Friends.AddFriendRequest;
-import com.backend.discord_clone.models.Friends.AddFriendResponse;
-import com.backend.discord_clone.models.Friends.GetFriendsReponse;
-import com.backend.discord_clone.models.Friends.GetFriendRequest;
-import com.backend.discord_clone.models.Friends.RemoveFriendRequest;
-import com.backend.discord_clone.models.Friends.RemoveFriendResponse;
+import com.backend.discord_clone.Models.Friends.AddFriendRequest;
+import com.backend.discord_clone.Models.Friends.AddFriendResponse;
+import com.backend.discord_clone.Models.Friends.GetFriendRequest;
+import com.backend.discord_clone.Models.Friends.GetFriendsReponse;
+import com.backend.discord_clone.Models.Friends.RemoveFriendRequest;
+import com.backend.discord_clone.Models.Friends.RemoveFriendResponse;
 
 public interface FriendInterface {
 
