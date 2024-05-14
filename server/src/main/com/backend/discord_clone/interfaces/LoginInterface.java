@@ -4,7 +4,7 @@ import com.backend.discord_clone.Models.User.CachedLoginResponse;
 import com.backend.discord_clone.Models.User.CreateUserRequest;
 import com.backend.discord_clone.Models.User.CreateUserResponse;
 import com.backend.discord_clone.Models.User.UserLoginCachedRequest;
-import com.backend.discord_clone.Models.User.UserLoginReponse;
+import com.backend.discord_clone.Models.User.UserLoginResponse;
 import com.backend.discord_clone.Models.User.UserLoginRequest;
 
 public interface LoginInterface {
@@ -14,7 +14,7 @@ public interface LoginInterface {
      * @param userLoginRequest Request model for login
      * @return UserLoginReponse Response model for login
      */
-    public UserLoginReponse login(UserLoginRequest userLoginRequest);
+    public UserLoginResponse login(UserLoginRequest userLoginRequest);
 
     /**
      * Method to create a user

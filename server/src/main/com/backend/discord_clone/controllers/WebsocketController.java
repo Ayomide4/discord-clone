@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class WebsocketController {
-
+    // private final LocationService _locationService;
 
     // public WebsocketController(LocationService locationService) {
     //     this._locationService = locationService;

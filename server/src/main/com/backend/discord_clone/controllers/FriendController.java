@@ -1,6 +1,5 @@
 package com.backend.discord_clone.Controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,6 @@ import com.backend.discord_clone.Models.Friends.GetFriendRequest;
 import com.backend.discord_clone.Models.Friends.GetFriendsReponse;
 import com.backend.discord_clone.Models.Friends.RemoveFriendRequest;
 import com.backend.discord_clone.Models.Friends.RemoveFriendResponse;
-import com.backend.discord_clone.Services.Friends.FriendService;
 
 
 @Controller
@@ -25,7 +23,7 @@ public class FriendController {
 
     private final FriendInterface friendService;
 
-    public FriendController(@Autowired FriendService friendService) {
+    public FriendController(FriendInterface friendService) {
         this.friendService = friendService;
     }
 
