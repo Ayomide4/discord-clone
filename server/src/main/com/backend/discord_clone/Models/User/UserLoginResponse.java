@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class UserLoginReponse {
+public class UserLoginResponse {
     Boolean success;
     String message;
     String username;

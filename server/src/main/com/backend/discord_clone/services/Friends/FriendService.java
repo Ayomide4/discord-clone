@@ -3,7 +3,7 @@ package com.backend.discord_clone.Services.Friends;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.backend.discord_clone.Repositories.UserRepository;
 import com.backend.discord_clone.Repositories.Friends.FriendRepository;
@@ -15,7 +15,7 @@ import com.backend.discord_clone.Models.Friends.GetFriendsReponse;
 import com.backend.discord_clone.Models.Friends.RemoveFriendRequest;
 import com.backend.discord_clone.Models.Friends.RemoveFriendResponse;
 
-@Component
+@Service
 public class FriendService implements FriendInterface{
 
     @Autowired

@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.backend.discord_clone.Interfaces.LoginInterface;
 import com.backend.discord_clone.Repositories.UserRepository;
@@ -16,12 +16,12 @@ import com.backend.discord_clone.Models.User.CreateUserRequest;
 import com.backend.discord_clone.Models.User.CreateUserResponse;
 import com.backend.discord_clone.Models.User.User;
 import com.backend.discord_clone.Models.User.UserLoginCachedRequest;
-import com.backend.discord_clone.Models.User.UserLoginReponse;
+import com.backend.discord_clone.Models.User.UserLoginResponse;
 import com.backend.discord_clone.Models.User.UserLoginRequest;
 import com.backend.discord_clone.Models.User.UserRole;
 
 
-@Component
+@Service
 public class UserLoginService implements LoginInterface {
 
     @Autowired
@@ -36,7 +36,7 @@ public class UserLoginService implements LoginInterface {
      * 
      * @param userLoginRequest Request model for login
      */
-    public UserLoginReponse login(UserLoginRequest userLoginRequest) {
+    public UserLoginResponse login(UserLoginRequest userLoginRequest) {
         try {
             Optional<User> user = userRepository.findByEmail(userLoginRequest.getEmail());
             String sessionToken = java.util.UUID.randomUUID().toString();
@@ -47,17 +47,17 @@ public class UserLoginService implements LoginInterface {
                     userRepository.updateSessionToken(userLoginRequest.getEmail(), sessionToken);
 
                     logger.info(userLoginRequest.getEmail() + " logged in " + LocalDateTime.now());
-                    return new UserLoginReponse(true, "Login successful", user.get().getUsername(),  sessionToken);
+                    return new UserLoginResponse(true, "Login successful", user.get().getUsername(),  sessionToken);
                 } else {
                     logger.info(userLoginRequest.getEmail() + " incorrect password " + LocalDateTime.now());
-                    return new UserLoginReponse(false, "Incorrect password", null,  null);
+                    return new UserLoginResponse(false, "Incorrect password", null,  null);
                 }
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
         logger.info(userLoginRequest.getEmail() + " not found " + LocalDateTime.now());
-        return new UserLoginReponse(false, "Email not found", null, null);
+        return new UserLoginResponse(false, "Email not found", null, null);
     }
 
     @Override

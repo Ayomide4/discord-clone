@@ -17,6 +17,6 @@ spring:
     
 security:
     jwt:
-        secret: ======================Discord=Clone===========================
+        secret: f9a3986a54f6097c92444b85e9bf10c0472389209e1d0c85c0b206267d3f77a3
         expiration: 86400000
         cookieName: Discord_Clone_JWT
