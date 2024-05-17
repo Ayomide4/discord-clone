@@ -9,7 +9,7 @@
   .top-bar {
     width: 100%;
     height: 3rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #26282c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +33,8 @@
     height: 2.75rem;
     width: 92%;
     cursor: pointer;
+    margin-top: 0.5rem;
+    border-radius: 5px;
     background-color: #4e505899;
     transition: 0.2s ease-in-out;
     &:hover {

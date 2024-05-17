@@ -1,6 +1,7 @@
 import { BsDiscord } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 export default function ServerNav() {
+  //TODO: fix friend icon to new discord icon
   return (
     <div className="server-nav-container">
       <div className="discord-btn">
