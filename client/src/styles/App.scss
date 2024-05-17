@@ -9,11 +9,15 @@
 @import "./socialNav.scss";
 @import "./topbar.scss";
 @import "./socialDashboard.scss";
+@font-face {
+  font-family: "gg-sans";
+  src: url("../assets/gg-sans-2/gg-sans-Regular.ttf");
+}
 
 body {
   padding: 0;
   margin: 0;
   height: 100%;
   overflow: hidden;
-  font-family: "Inter", sans-serif;
+  font-family: "gg-sans";
 }
