@@ -80,128 +80,169 @@
     }
   }
 
-  .conversation {
-    width: 68%;
-    height: 100%;
-    border-right: 1px solid #3f4146;
-  }
-  .add-friend-container {
+  .container {
+    display: flex;
     width: 100%;
-    margin: 2rem;
-    margin-top: 1rem;
-    h2 {
-      margin: 0;
-      padding: 0;
-      color: #f2f3f5;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      margin: 0;
-      margin-bottom: 1rem;
-      color: #b6bac0;
-      font-size: 0.9rem;
-    }
-    .friend-request-container {
-      background-color: #1e1f22;
-      width: 90%;
-      padding: 0.75rem;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      input {
-        width: 80%;
-        border: none;
-        background-color: inherit;
-        color: #4f5154;
-        font-size: 1rem;
-      }
+    height: 100%;
 
-      input:focus {
-        outline: none;
-      }
-      button {
-        background-color: #5b65ea;
-        border: none;
+    .conversation {
+      width: 100%;
+      height: 100%;
+      border-right: 1px solid #3f4146;
+    }
+    .add-friend-container {
+      width: 100%;
+      padding: 1rem 0 2rem 2rem;
+      h2 {
+        margin: 0;
+        padding: 0;
         color: #f2f3f5;
-        padding: 0.5rem;
-        width: auto;
-        border-radius: 5px;
-        cursor: pointer;
-        display: block;
-        white-space: nowrap;
-      }
-    }
-  }
-  .extra {
-    position: relative;
-    border-top: 1px solid #3f4146;
-    padding: 2rem;
-    padding-top: 1rem;
-
-    h2,
-    p {
-      padding: 0;
-      margin: 0;
-    }
-    h2 {
-      color: #f2f3f5;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    #explore-btn {
-      display: flex;
-      border: 5px;
-      width: 45%;
-      background-color: #2b2d31;
-      padding: 0.5rem;
-      border-radius: 10px;
-      border: 1px solid #3e4047;
-      align-items: center;
-      #explore-icon-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #50a361;
-        width: 36px;
-        height: 36px;
-        border-radius: 5px;
-        margin-right: 0.5rem;
-      }
-      #explore-icon {
-        width: 24px;
-        height: 24px;
-      }
-      .icon {
-        filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(338deg)
-          brightness(101%) contrast(104%);
-        width: 24px;
-        height: 24px;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
       }
       p {
-        color: #f2f3f5;
-        margin-right: auto;
+        margin: 0;
+        margin-bottom: 1rem;
+        color: #b6bac0;
+        font-size: 0.9rem;
+      }
+      .friend-request-container {
+        background-color: #1e1f22;
+        width: 90%;
+        padding: 0.75rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        input {
+          width: 80%;
+          border: none;
+          background-color: inherit;
+          color: #4f5154;
+          font-size: 1rem;
+        }
+
+        input:focus {
+          outline: none;
+        }
+        button {
+          background-color: #5b65ea;
+          border: none;
+          color: #f2f3f5;
+          padding: 0.5rem;
+          width: auto;
+          border-radius: 5px;
+          cursor: pointer;
+          display: block;
+          white-space: nowrap;
+        }
       }
     }
+    .extra {
+      position: relative;
+      border-top: 1px solid #3f4146;
+      padding: 2rem;
+      padding-top: 1rem;
 
-    .img-container {
-      position: absolute;
-      left: 200px;
-      right: 0;
-      top: 120px;
-      margin-left: auto;
-      margin-right: auto;
+      h2,
+      p {
+        padding: 0;
+        margin: 0;
+      }
+      h2 {
+        color: #f2f3f5;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      #explore-btn {
+        display: flex;
+        border: 5px;
+        width: 45%;
+        background-color: #2b2d31;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: 1px solid #3e4047;
+        align-items: center;
+        #explore-icon-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #50a361;
+          width: 36px;
+          height: 36px;
+          border-radius: 5px;
+          margin-right: 0.5rem;
+        }
+        #explore-icon {
+          width: 24px;
+          height: 24px;
+        }
+        .icon {
+          filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(338deg)
+            brightness(101%) contrast(104%);
+          width: 24px;
+          height: 24px;
+        }
+        p {
+          color: #f2f3f5;
+          margin-right: auto;
+        }
+      }
+
+      .img-container {
+        position: absolute;
+        left: 200px;
+        right: 0;
+        top: 120px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .bg-img {
+        background-image: url(../assets/extra-bg.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 376px;
+        height: 162px;
+        margin-bottom: 3rem;
+      }
+      #bg-img-subtitle {
+        color: #b6bac0;
+      }
     }
-    .bg-img {
-      background-image: url(../assets/extra-bg.svg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      width: 376px;
-      height: 162px;
-    }
-    #bg-img-subtitle {
-      color: #b6bac0;
+    .friend-activity {
+      width: 45%;
+      h3,
+      h2 {
+        color: #f2f3f5;
+        margin: 0;
+      }
+      h2 {
+        padding: 1rem 0 0 1rem;
+        margin-bottom: 2rem;
+        font-size: 1.3rem;
+        text-align: left;
+      }
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      #test {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #description-container {
+        width: 80%;
+      }
+      p {
+        margin: 0;
+        color: #b6bac0;
+        font-size: 0.9rem;
+      }
+      h3,
+      p {
+        text-align: center;
+      }
     }
   }
 }
