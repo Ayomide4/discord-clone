@@ -1,4 +1,21 @@
 export default function SocialNav() {
+  let n = 10;
+
+  const placeholders = [...Array(n)].map((i) => {
+    let opacity = 1 - i * 0.1;
+    console.log(n);
+    return (
+      <div
+        className="placeholder-container"
+        key={i}
+        style={{ opacity: opacity }}
+      >
+        <div className="icon-placeholder placeholder"></div>
+        <div className="name-placeholder placeholder"></div>
+      </div>
+    );
+  });
+
   return (
     <div className="social-nav-container">
       <div className="top-bar">
@@ -13,7 +30,7 @@ export default function SocialNav() {
           height="16"
           viewBox="0 0 24 24"
         >
-          <g fill="none" fill-rule="evenodd">
+          <g fill="none" fillRule="evenodd">
             <path
               fill="white"
               fill-rule="nonzero"
@@ -45,7 +62,7 @@ export default function SocialNav() {
             ></polygon>
           </svg>
         </div>
-        <div className="message-list"></div>
+        <div className="message-list">{placeholders}</div>
       </div>
     </div>
   );

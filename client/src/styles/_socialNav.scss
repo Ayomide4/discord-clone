@@ -82,4 +82,35 @@
       cursor: pointer;
     }
   }
+  .message-list {
+    display: flex;
+    align-items: center;
+    height: 35rem;
+
+    .placeholder-container {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 1rem;
+    }
+
+    .placeholder {
+      color: #313338;
+    }
+
+    .icon-placeholder {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #313338;
+    }
+
+    .name-placeholder {
+      width: 70%;
+      height: 1.5rem;
+      border-radius: 16px;
+      background-color: #313338;
+    }
+  }
 }
