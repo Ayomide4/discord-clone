@@ -1,9 +1,10 @@
+import settingsIcon from "../assets/settings.svg";
+import microphone from "../assets/microphone.svg";
+import deafen from "../assets/deafen.svg";
 export default function SocialNav() {
-  let n = 10;
-
-  const placeholders = [...Array(n)].map((i, item) => {
+  const placeholders = [...Array(10)].map((i, item) => {
     let opacity = 1 - item * 0.1;
-    console.log(opacity);
+
     return (
       <div
         className="placeholder-container"
@@ -63,6 +64,21 @@ export default function SocialNav() {
           </svg>
         </div>
         <div className="message-list">{placeholders}</div>
+      </div>
+      <div className="user-info">
+        <div className="user-icon-container">
+          <div className="user-icon"></div>
+          <div className="user-status-icon"></div>
+        </div>
+        <div className="user-info-container">
+          <p className="user-name">Username</p>
+          <p className="user-status">Online</p>
+        </div>
+        <div className="user-options">
+          <img src={settingsIcon} alt="settings" className="icon" />
+          <img src={microphone} alt="microphone" className="icon" />
+          <img src={deafen} alt="deafen" className="icon" />
+        </div>
       </div>
     </div>
   );

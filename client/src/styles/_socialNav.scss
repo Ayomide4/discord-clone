@@ -113,4 +113,61 @@
       background-color: #313338;
     }
   }
+  .user-info {
+    background-color: #232428;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .user-icon-container {
+      margin-left: 0.5rem;
+      position: relative;
+      .user-icon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: red;
+      }
+      .user-status-icon {
+        position: absolute;
+        right: -2px;
+        bottom: -2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #2cac65;
+        border: 2px solid black;
+      }
+    }
+    .user-info-container {
+      margin-left: 0.5rem;
+      p {
+        margin: 0;
+      }
+      .user-name {
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #fff;
+      }
+      .user-status {
+        font-size: 0.8rem;
+        color: #b5bac1;
+      }
+    }
+    .user-options {
+      display: flex;
+      align-items: center;
+      width: 80px;
+      justify-content: space-between;
+      margin-left: auto;
+      margin-right: 1rem;
+      margin-top: 0.5rem;
+      .icon {
+        filter: brightness(0) saturate(100%) invert(86%) sepia(8%)
+          saturate(177%) hue-rotate(177deg) brightness(87%) contrast(87%);
+        width: 23px;
+        height: 23px;
+      }
+    }
+  }
 }

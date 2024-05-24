@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg style="content-visibility:visible;height:100%;transform:translate3d(0px, 0px, 0px);width:100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="k">
+<rect width="24" height="24"/>
+</clipPath>
+<clipPath id="j">
+<path d="m0 0h600v600h-600z"/>
+</clipPath>
+<clipPath id="i">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+<clipPath id="h">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+<mask id="g">
+<rect width="600" height="600" fill="#fff"/>
+</mask>
+<clipPath id="f">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+<clipPath id="e">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+<clipPath id="d">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+<mask id="c">
+<rect transform="matrix(.96154 0 0 .96154 211.54 211.54)" width="600" height="600" fill="#fff"/>
+<path d="m67.22 823.8s-193.52 193.95-193.52 193.95l103.98 103.31 193.52-193.95s68.474-66.76 15.678-116.99c-56.881-54.114-119.66 13.682-119.66 13.682"/>
+</mask>
+<clipPath id="b">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+<clipPath id="a">
+<path d="m0 0h1e3v1e3h-1e3z"/>
+</clipPath>
+</defs>
+<g clip-path="url(#k)">
+<g transform="scale(.04)" clip-path="url(#j)" display="block">
+<g transform="matrix(1.04 0 0 1.04 -220 -220)" clip-path="url(#d)" display="block">
+<g mask="url(#c)">
+<g clip-path="url(#a)" display="block">
+<g transform="matrix(25,0,0,25,200,200)" display="block">
+<g transform="translate(12 12.288)">
+<path d="m-8-0.288c0-4.418 3.582-8 8-8s8 3.582 8 8c0 0.693-0.046 1.36-0.146 2h-1.854c-0.944 0-1.833 0.445-2.4 1.2l-1.973 2.63c-0.469 0.626-0.591 1.446-0.323 2.181 0.585 1.609 2.583 2.565 4.178 1.409 3.357-2.431 4.518-5.752 4.518-9.42 0-5.523-4.477-10-10-10s-10 4.477-10 10c0 3.668 1.161 6.989 4.518 9.42 1.595 1.156 3.593 0.2 4.178-1.409 0.268-0.735 0.146-1.555-0.323-2.181l-1.973-2.63c-0.567-0.755-1.456-1.2-2.4-1.2h-1.854c-0.1-0.64-0.146-1.307-0.146-2z" fill="#5865f2"/>
+</g>
+</g>
+</g>
+<g clip-path="url(#b)" display="none">
+<g display="none"/>
+</g>
+</g>
+</g>
+<g clip-path="url(#h)" display="none">
+<g mask="url(#g)">
+<g clip-path="url(#e)" display="none">
+<g display="none"/>
+</g>
+<g clip-path="url(#f)" display="none">
+<g display="none"/>
+</g>
+</g>
+</g>
+<g transform="translate(-200 -200)" clip-path="url(#i)" display="block">
+<g display="none"/>
+<g display="none"/>
+</g>
+<g display="none"/>
+</g>
+</g>
+</svg>
