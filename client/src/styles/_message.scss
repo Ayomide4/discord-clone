@@ -2,6 +2,9 @@
   width: 100%;
   height: 100vh;
   background-color: #313338;
+  p {
+    user-select: none;
+  }
 
   .message-header {
     display: flex;
@@ -22,15 +25,43 @@
       filter: invert(58%) sepia(2%) saturate(1329%) hue-rotate(188deg)
         brightness(90%) contrast(80%);
     }
-    p {
-      font-size: 1rem;
-      font-weight: 600;
+    .message-header-options {
+      .icon {
+        cursor: pointer;
+      }
+    }
+    .filter-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70%;
       margin-left: 0.5rem;
-      color: #b6bac0;
+      min-width: 40px;
+      border-radius: 5px;
+      padding: 0 0.25rem 0 0.25rem;
+
+      p {
+        user-select: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        color: #b6bac0;
+      }
+    }
+    .filter-container:hover {
+      background-color: #43444a;
     }
 
     #add-friend-tag {
-      color: #5eba73;
+      user-select: none;
+      cursor: pointer;
+      margin-left: 0.5rem;
+      min-width: 40px;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #417e4c;
+      padding: 0.25rem;
     }
 
     .selected {

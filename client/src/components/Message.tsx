@@ -14,10 +14,18 @@ export default function Message() {
           <div className="separator"></div>
         </div>
         <div className="message-header-filters">
-          <p>Online</p>
-          <p>Pending</p>
-          <p>All</p>
-          <p>Blocked</p>
+          <div className="filter-container">
+            <p>Online</p>
+          </div>
+          <div className="filter-container">
+            <p>Pending</p>
+          </div>
+          <div className="filter-container">
+            <p>All</p>
+          </div>
+          <div className="filter-container">
+            <p>Blocked</p>
+          </div>
           <p id="add-friend-tag">Add Friend</p>
         </div>
         <div className="message-header-options">
