@@ -8,27 +8,22 @@
 
   .top-bar {
     width: 100%;
-    height: 200px;
+    height: 3rem;
+    border-bottom: 1px solid #26282c;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .search-btn {
     background-color: #1e1f22;
-    height: 30px;
     width: 92%;
     border-radius: 5px;
     outline: none;
     cursor: pointer;
     color: #90979f;
     text-align: left;
+    padding: 0.5rem;
     border: none;
-  }
-
-  .line {
-    width: 100%;
-    border-bottom: 1px solid #262626;
-    margin-bottom: 0.5rem;
   }
 
   .friend-tab {
@@ -38,6 +33,8 @@
     height: 2.75rem;
     width: 92%;
     cursor: pointer;
+    margin-top: 0.5rem;
+    border-radius: 5px;
     background-color: #4e505899;
     transition: 0.2s ease-in-out;
     &:hover {
@@ -59,7 +56,9 @@
   }
 
   .direct-message-container {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
     width: 92%;
   }
 
@@ -81,6 +80,94 @@
 
     .poly {
       cursor: pointer;
+    }
+  }
+  .message-list {
+    display: flex;
+    align-items: center;
+    height: 35rem;
+
+    .placeholder-container {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 1rem;
+    }
+
+    .placeholder {
+      color: #313338;
+    }
+
+    .icon-placeholder {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #313338;
+    }
+
+    .name-placeholder {
+      width: 70%;
+      height: 1.5rem;
+      border-radius: 16px;
+      background-color: #313338;
+    }
+  }
+  .user-info {
+    background-color: #232428;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .user-icon-container {
+      margin-left: 0.5rem;
+      position: relative;
+      .user-icon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: red;
+      }
+      .user-status-icon {
+        position: absolute;
+        right: -2px;
+        bottom: -2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #2cac65;
+        border: 2px solid black;
+      }
+    }
+    .user-info-container {
+      margin-left: 0.5rem;
+      p {
+        margin: 0;
+      }
+      .user-name {
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #fff;
+      }
+      .user-status {
+        font-size: 0.8rem;
+        color: #b5bac1;
+      }
+    }
+    .user-options {
+      display: flex;
+      align-items: center;
+      width: 80px;
+      justify-content: space-between;
+      margin-left: auto;
+      margin-right: 1rem;
+      margin-top: 0.5rem;
+      .icon {
+        filter: brightness(0) saturate(100%) invert(86%) sepia(8%)
+          saturate(177%) hue-rotate(177deg) brightness(87%) contrast(87%);
+        width: 23px;
+        height: 23px;
+      }
     }
   }
 }
