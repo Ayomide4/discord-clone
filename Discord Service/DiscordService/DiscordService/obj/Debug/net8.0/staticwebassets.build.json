@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MfY8xxqM+CfCH1fPLUP1oaxzZJ5MRGyb/LADQU982zU=",
+  "Source": "DiscordService",
+  "BasePath": "_content/DiscordService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

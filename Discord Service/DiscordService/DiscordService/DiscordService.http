@@ -1,0 +1,6 @@
+@DiscordService_HostAddress = http://localhost:5139
+
+GET {{DiscordService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
