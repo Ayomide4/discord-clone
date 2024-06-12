@@ -26,11 +26,11 @@ namespace DiscordService.Controllers
                 LoginResponse response = _loginService.Login(loginRequest);
                 if (!response.Success)
                 {
-                    return BadRequest(response.ErrorMessage);
+                    return BadRequest(response);
                 }
 
                 HttpContext.Response.Headers.Append("Authorization", _jwt.GenerateToken(loginRequest.Username));
-                return Ok(response);
+                return Ok(response.Success);
             }
             catch (Exception e)
             {
@@ -47,9 +47,9 @@ namespace DiscordService.Controllers
                 SignupResponse response = _loginService.SignUp(signupRequest);
                 if (!response.Success)
                 {
-                    return BadRequest(response.ErrorMessage);
+                    return BadRequest(response);
                 }
-                return Ok(response);
+                return Ok(response.Success);
             }
             catch (Exception e)
             {
