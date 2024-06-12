@@ -1,9 +1,7 @@
 using DiscordService.Db;
 using DiscordService.Interfaces;
 using DiscordService.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ILogin, LoginService>();
+builder.Services.AddScoped<IJwt, Jwt>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DiscordSqlConnection")));
 
