@@ -10,9 +10,11 @@ namespace DiscordService.Controllers
     public class LoginController : Controller
     {
         private readonly ILogin _loginService;
-        public LoginController(ILogin loginService)
+        private readonly IJwt _jwt;
+        public LoginController(ILogin loginService, IJwt jwt)
         {
             _loginService = loginService;
+            _jwt = jwt;
         }
 
         [RequireHttps]
@@ -21,7 +23,14 @@ namespace DiscordService.Controllers
         {
             try
             {
-                return Ok(_loginService.Login(loginRequest));
+                LoginResponse response = _loginService.Login(loginRequest);
+                if (!response.Success)
+                {
+                    return BadRequest(response.ErrorMessage);
+                }
+
+                HttpContext.Response.Headers.Append("Authorization", _jwt.GenerateToken(loginRequest.Username));
+                return Ok(response);
             }
             catch (Exception e)
             {
@@ -35,7 +44,12 @@ namespace DiscordService.Controllers
         {
             try
             {
-                return Ok(_loginService.SignUp(signupRequest));
+                SignupResponse response = _loginService.SignUp(signupRequest);
+                if (!response.Success)
+                {
+                    return BadRequest(response.ErrorMessage);
+                }
+                return Ok(response);
             }
             catch (Exception e)
             {
