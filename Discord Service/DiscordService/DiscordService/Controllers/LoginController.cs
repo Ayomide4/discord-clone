@@ -29,7 +29,7 @@ namespace DiscordService.Controllers
                     return BadRequest(response);
                 }
 
-                HttpContext.Response.Headers.Append("Authorization", _jwt.GenerateToken(loginRequest.Username));
+                HttpContext.Response.Headers.Append("Authorization", "Bearer " + _jwt.GenerateToken(loginRequest.Username));
                 return Ok(response.Success);
             }
             catch (Exception e)
